@@ -1,0 +1,6 @@
+{
+  "name": "Dirtquit Website",
+  "description": "Professional home and deep cleaning services across Bengaluru, including kitchens, bathrooms, sofas, and move-in cleaning.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

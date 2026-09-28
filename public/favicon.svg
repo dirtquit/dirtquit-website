@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" width="100%" height="100%">
+  <!-- Rounded tile background -->
+  <rect width="128" height="128" rx="28" fill="#0A2342" />
+
+  <!-- D with Star Sparkle -->
+  <path d="M 22 28 L 52 28 C 70 28 80 39 80 54 C 80 69 70 80 52 80 L 22 80 Z" fill="#FFFFFF" />
+  <path d="M 36 40 L 48 40 C 60 40 66 46 66 54 C 66 62 60 68 48 68 L 36 68 Z" fill="#0A2342" />
+  <!-- 4-pointed Star Sparkle inside D -->
+  <path d="M 51 44 C 52 50 55 52 61 54 C 55 56 52 58 51 64 C 50 58 47 56 41 54 C 47 52 50 50 51 44 Z" fill="#009FE3" />
+
+  <!-- Mop Handle Angled -->
+  <rect x="75" y="16" width="6" height="66" rx="3" fill="#FFFFFF" transform="rotate(20 78 49)" />
+  
+  <!-- Mop Head and Fibers (Electric Blue) -->
+  <path d="M 52 82 C 48 90 40 102 44 110 C 46 112 50 114 62 114 C 76 114 86 114 96 114 C 99 114 100 111 96 108 C 84 98 72 92 68 82 Z" fill="#009FE3" />
+  
+  <!-- Bucket (Navy & White Rim) -->
+  <path d="M 82 78 L 114 78 C 116 78 117 80 116 82 L 110 110 C 109 113 107 114 104 114 L 88 114 C 85 114 83 113 82 110 L 78 82 C 77 80 79 78 82 78 Z" fill="#0E335C" stroke="#FFFFFF" stroke-width="2" />
+  
+  <!-- Sparkles -->
+  <path d="M 106 62 C 106.5 66 108 67 112 68 C 108 69 106.5 70 106 74 C 105.5 70 104 69 100 68 C 104 67 105.5 66 106 62 Z" fill="#009FE3" />
+  <path d="M 116 70 C 116.3 72.5 117.5 73.5 120 74 C 117.5 74.5 116.3 75.5 116 78 C 115.7 75.5 114.5 74.5 112 74 C 114.5 73.5 115.7 72.5 116 70 Z" fill="#58C5F6" />
+</svg>
