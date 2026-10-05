@@ -52,7 +52,7 @@ export function BookingForm({
     sameAsPhone: true,
     service: initialService || "Deep Cleaning",
     propertyType: "2 BHK",
-    location: "Bellandur",
+    location: "",
     date: "",
     time: "Morning (08:00 AM - 12:00 PM)",
     details: "",
