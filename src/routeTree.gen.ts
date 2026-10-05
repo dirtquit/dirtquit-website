@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CityIndexRouteImport } from './routes/$city/index'
 import { Route as CityCategorySlugRouteImport } from './routes/$city/$categorySlug'
+import { Route as DevImageReviewRouteImport } from './routes/dev/image-review'
 import { Route as ServiceLocationsIndexRouteImport } from './routes/service-locations/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const CityCategorySlugRoute = CityCategorySlugRouteImport.update({
   path: '/$city/$categorySlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DevImageReviewRoute = DevImageReviewRouteImport.update({
+  id: '/dev/image-review',
+  path: '/dev/image-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiceLocationsIndexRoute = ServiceLocationsIndexRouteImport.update({
   id: '/service-locations/',
   path: '/service-locations/',
@@ -38,12 +44,14 @@ const ServiceLocationsIndexRoute = ServiceLocationsIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$city/$categorySlug': typeof CityCategorySlugRoute
+  '/dev/image-review': typeof DevImageReviewRoute
   '/$city/': typeof CityIndexRoute
   '/service-locations/': typeof ServiceLocationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$city/$categorySlug': typeof CityCategorySlugRoute
+  '/dev/image-review': typeof DevImageReviewRoute
   '/$city': typeof CityIndexRoute
   '/service-locations': typeof ServiceLocationsIndexRoute
 }
@@ -51,18 +59,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$city/$categorySlug': typeof CityCategorySlugRoute
+  '/dev/image-review': typeof DevImageReviewRoute
   '/$city/': typeof CityIndexRoute
   '/service-locations/': typeof ServiceLocationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$city/$categorySlug' | '/$city/' | '/service-locations/'
+  fullPaths:
+    | '/'
+    | '/$city/$categorySlug'
+    | '/dev/image-review'
+    | '/$city/'
+    | '/service-locations/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$city/$categorySlug' | '/$city' | '/service-locations'
+  to:
+    | '/'
+    | '/$city/$categorySlug'
+    | '/dev/image-review'
+    | '/$city'
+    | '/service-locations'
   id:
     | '__root__'
     | '/'
     | '/$city/$categorySlug'
+    | '/dev/image-review'
     | '/$city/'
     | '/service-locations/'
   fileRoutesById: FileRoutesById
@@ -70,6 +90,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CityCategorySlugRoute: typeof CityCategorySlugRoute
+  DevImageReviewRoute: typeof DevImageReviewRoute
   CityIndexRoute: typeof CityIndexRoute
   ServiceLocationsIndexRoute: typeof ServiceLocationsIndexRoute
 }
@@ -97,6 +118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CityCategorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dev/image-review': {
+      id: '/dev/image-review'
+      path: '/dev/image-review'
+      fullPath: '/dev/image-review'
+      preLoaderRoute: typeof DevImageReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/service-locations/': {
       id: '/service-locations/'
       path: '/service-locations'
@@ -110,6 +138,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CityCategorySlugRoute: CityCategorySlugRoute,
+  DevImageReviewRoute: DevImageReviewRoute,
   CityIndexRoute: CityIndexRoute,
   ServiceLocationsIndexRoute: ServiceLocationsIndexRoute,
 }

@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getCityBySlug } from "@/data/cities";
 import { CATEGORIES } from "@/data/categories";
+import { getCategoryImages } from "@/data/categoryImages";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { BookingForm } from "@/components/site/BookingForm";
@@ -89,36 +90,57 @@ function CityHubRouteComponent() {
             />
 
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {CATEGORIES.map((cat) => (
-                <div
-                  key={cat.slug}
-                  className="flex flex-col justify-between rounded-3xl border border-border bg-card p-6 shadow-soft transition-all hover:border-primary/50 hover:shadow-lift"
-                >
-                  <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-primary">
-                      {cat.group.toUpperCase()}
-                    </span>
-                    <h3 className="mt-2 text-xl font-bold text-navy">{cat.name}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                      {cat.summary}
-                    </p>
+              {CATEGORIES.map((cat) => {
+                const img = getCategoryImages(cat.slug);
+                return (
+                  <div
+                    key={cat.slug}
+                    className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 sm:p-6 shadow-soft transition-all hover:border-primary/50 hover:shadow-lift"
+                  >
+                    <div>
+                      {img && (
+                        <a
+                          href={`/${city.slug}/${cat.slug}/`}
+                          className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-secondary/50 mb-4 border border-border/50"
+                        >
+                          <img
+                            src={img.hero.src}
+                            alt={img.hero.alt}
+                            width={480}
+                            height={300}
+                            loading="lazy"
+                            decoding="async"
+                            className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </a>
+                      )}
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-primary">
+                        {cat.group.toUpperCase()}
+                      </span>
+                      <h3 className="mt-2 text-xl font-bold text-navy group-hover:text-primary transition-colors">
+                        <a href={`/${city.slug}/${cat.slug}/`}>{cat.name}</a>
+                      </h3>
+                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                        {cat.summary}
+                      </p>
+                    </div>
+                    <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between">
+                      <a
+                        href={`/${city.slug}/${cat.slug}/`}
+                        className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
+                      >
+                        View Details & Pricing <ChevronRight className="size-3.5" />
+                      </a>
+                      <a
+                        href="#book"
+                        className="text-xs font-bold text-navy hover:text-primary transition-colors"
+                      >
+                        Book →
+                      </a>
+                    </div>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between">
-                    <a
-                      href={`/${city.slug}/${cat.slug}/`}
-                      className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
-                    >
-                      View Details & Pricing <ChevronRight className="size-3.5" />
-                    </a>
-                    <a
-                      href="#book"
-                      className="text-xs font-bold text-navy hover:text-primary transition-colors"
-                    >
-                      Book →
-                    </a>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </Container>
         </section>

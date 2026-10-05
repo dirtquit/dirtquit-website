@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import type { CategoryData, City } from "@/data/types";
 import { getCategoryBySlug } from "@/data/categories";
+import { getCategoryImages } from "@/data/categoryImages";
 import { selectBookingArea, selectBookingService, telLink, track, whatsappLink, PHONE_DISPLAY } from "@/lib/dirtquit";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { WhyDirtQuit } from "./WhyDirtQuit";
@@ -709,38 +710,59 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
               />
 
               <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {relatedCategories.map((rel) => (
-                  <div
-                    key={rel.slug}
-                    className="flex flex-col justify-between rounded-3xl border border-border bg-card p-6 shadow-soft transition-all hover:border-primary/50 hover:shadow-lift"
-                  >
-                    <div>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-primary">
-                        {rel.group.toUpperCase()}
-                      </span>
-                      <h4 className="mt-2 text-lg font-bold text-navy">{rel.name}</h4>
-                      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                        {rel.summary}
-                      </p>
-                    </div>
+                {relatedCategories.map((rel) => {
+                  const relImg = getCategoryImages(rel.slug);
+                  return (
+                    <div
+                      key={rel.slug}
+                      className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-soft transition-all hover:border-primary/50 hover:shadow-lift"
+                    >
+                      <div>
+                        {relImg && (
+                          <a
+                            href={`/${city.slug}/${rel.slug}/`}
+                            className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-secondary/50 mb-4 border border-border/50"
+                          >
+                            <img
+                              src={relImg.hero.src}
+                              alt={relImg.hero.alt}
+                              width={400}
+                              height={250}
+                              loading="lazy"
+                              decoding="async"
+                              className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </a>
+                        )}
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-primary">
+                          {rel.group.toUpperCase()}
+                        </span>
+                        <h4 className="mt-2 text-lg font-bold text-navy group-hover:text-primary transition-colors">
+                          <a href={`/${city.slug}/${rel.slug}/`}>{rel.name}</a>
+                        </h4>
+                        <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                          {rel.summary}
+                        </p>
+                      </div>
 
-                    <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between">
-                      <a
-                        href={`/${city.slug}/${rel.slug}/`}
-                        className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
-                      >
-                        Learn More <ChevronRight className="size-3.5" />
-                      </a>
-                      <a
-                        href="#book"
-                        onClick={() => selectBookingService(rel.name)}
-                        className="text-xs font-bold text-navy hover:text-primary transition-colors"
-                      >
-                        Book →
-                      </a>
+                      <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between">
+                        <a
+                          href={`/${city.slug}/${rel.slug}/`}
+                          className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
+                        >
+                          Learn More <ChevronRight className="size-3.5" />
+                        </a>
+                        <a
+                          href="#book"
+                          onClick={() => selectBookingService(rel.name)}
+                          className="text-xs font-bold text-navy hover:text-primary transition-colors"
+                        >
+                          Book →
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </Container>
           </section>

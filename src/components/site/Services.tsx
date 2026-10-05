@@ -22,11 +22,6 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
-import heroImg from "@/assets/hero-cleaner.jpg";
-import kitchenImg from "@/assets/kitchen-after.jpg";
-import bathImg from "@/assets/bath-after.jpg";
-import sofaImg from "@/assets/sofa-after.jpg";
-import finalCtaImg from "@/assets/final-cta.jpg";
 import { cn } from "@/lib/utils";
 import { useCity } from "@/lib/useCity";
 import {
@@ -36,6 +31,7 @@ import {
   whatsappLink,
   type ServiceCategory,
 } from "@/lib/dirtquit";
+import { getCategoryImages, customCleaningCard } from "@/data/categoryImages";
 import { Action, Arrow, Container, SectionHeading, WhatsAppButton, WhatsAppIcon } from "./shared";
 import { PriceEstimator } from "./PriceEstimator";
 
@@ -59,46 +55,15 @@ const ICONS: Record<string, React.ElementType> = {
   "floor-cleaning": PaintBucket,
   "window-cleaning": SunMedium,
   "move-cleaning": CalendarCheck,
+  "move-in-move-out-cleaning": CalendarCheck,
   "office-cleaning": Building2,
   "post-construction": Hammer,
+  "post-construction-cleaning": Hammer,
   "balcony-cleaning": Trees,
   "appliance-cleaning": Refrigerator,
   "regular-cleaning": Clock,
+  "regular-home-cleaning": Clock,
   "specialized-cleaning": Compass,
-};
-
-// Stock photography mapped for each service category
-const SERVICE_IMAGES: Record<string, string> = {
-  "home-cleaning": heroImg,
-  "deep-cleaning":
-    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
-  "apartment-cleaning":
-    "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
-  "bathroom-cleaning": bathImg,
-  "kitchen-cleaning": kitchenImg,
-  "sofa-cleaning": sofaImg,
-  "carpet-cleaning":
-    "https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80",
-  "mattress-cleaning":
-    "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80",
-  "floor-cleaning":
-    "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80",
-  "window-cleaning":
-    "https://images.unsplash.com/photo-1527515545081-5db817172677?auto=format&fit=crop&w=800&q=80",
-  "move-cleaning":
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-  "office-cleaning":
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-  "post-construction":
-    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
-  "balcony-cleaning":
-    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-  "appliance-cleaning":
-    "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=800&q=80",
-  "regular-cleaning":
-    "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80",
-  "specialized-cleaning":
-    "https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=800&q=80",
 };
 
 function ServiceCard({
@@ -110,10 +75,13 @@ function ServiceCard({
 }) {
   const [expanded, setExpanded] = useState(false);
   const { city } = useCity();
-  const Icon = ICONS[service.id] || Sparkles;
-  const imageUrl = SERVICE_IMAGES[service.id] || heroImg;
+  const slug = service.slug || service.id;
+  const Icon = ICONS[service.id] || ICONS[slug] || Sparkles;
+  const catImages = getCategoryImages(slug);
+  const imageUrl = catImages?.hero.src;
+  const imageAlt = catImages?.hero.alt || `${service.title} in ${city.name}`;
   const visibleItems = expanded ? service.items : service.items.slice(0, 6);
-  const categoryUrl = `/${city.slug}/${service.slug || service.id}/`;
+  const categoryUrl = `/${city.slug}/${slug}/`;
 
   const handleBook = () => {
     selectBookingService(service.title);
@@ -124,13 +92,21 @@ function ServiceCard({
       <div>
         {/* Visual Stock Image Header linking to Category Page */}
         <a href={categoryUrl} className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-secondary/50 mb-5 border border-border/50">
-          <img
-            src={imageUrl}
-            alt={`${service.title} service in Bengaluru`}
-            loading="lazy"
-            referrerPolicy="no-referrer"
-            className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={imageAlt}
+              width={catImages?.hero.width || 800}
+              height={catImages?.hero.height || 500}
+              loading="lazy"
+              decoding="async"
+              className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="size-full flex items-center justify-center bg-secondary text-muted-foreground text-xs font-semibold">
+              {service.title}
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/15 to-transparent" />
 
           {/* Floating Icon Badge & Category Tag on Top of Image */}
@@ -296,10 +272,12 @@ export function Services() {
               {/* Image banner for Custom Category */}
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-white/10 mb-5 border border-white/10">
                 <img
-                  src={finalCtaImg}
+                  src={customCleaningCard}
                   alt="Custom space and specialty cleaning in Bengaluru"
+                  width={800}
+                  height={500}
                   loading="lazy"
-                  referrerPolicy="no-referrer"
+                  decoding="async"
                   className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
