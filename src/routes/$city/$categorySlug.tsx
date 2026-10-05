@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getCityBySlug } from "@/data/cities";
 import { getCategoryBySlug } from "@/data/categories";
+import { getCategoryImages } from "@/data/categoryImages";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CategoryPageTemplate } from "@/components/site/CategoryPageTemplate";
@@ -11,10 +12,12 @@ export const Route = createFileRoute("/$city/$categorySlug")({
     if (!city || !city.isLive) {
       throw notFound();
     }
-    const category = getCategoryBySlug(params.categorySlug);
-    if (!category) {
+    const rawCategory = getCategoryBySlug(params.categorySlug);
+    if (!rawCategory) {
       throw notFound();
     }
+    const images = rawCategory.images || getCategoryImages(rawCategory.slug);
+    const category = { ...rawCategory, images };
     return { city, category };
   },
   head: ({ loaderData }) => {
@@ -25,6 +28,10 @@ export const Route = createFileRoute("/$city/$categorySlug")({
       category.metaDescription ||
       `Professional ${category.name.toLowerCase()} services in ${city.name} by Dirt Quit. Verified cleaners and quality work. Book your service slot today.`;
     const canonical = `https://www.dirtquit.info/${city.slug}/${category.slug}/`;
+    const ogImageSrc = category.images?.og?.src || category.images?.hero?.src;
+    const ogImageUrl = ogImageSrc
+      ? (ogImageSrc.startsWith("http") ? ogImageSrc : `https://www.dirtquit.info${ogImageSrc}`)
+      : undefined;
 
     return {
       meta: [
@@ -37,6 +44,12 @@ export const Route = createFileRoute("/$city/$categorySlug")({
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
+        ...(ogImageUrl
+          ? [
+              { property: "og:image", content: ogImageUrl },
+              { name: "twitter:image", content: ogImageUrl },
+            ]
+          : []),
       ],
       links: [{ rel: "canonical", href: canonical }],
     };

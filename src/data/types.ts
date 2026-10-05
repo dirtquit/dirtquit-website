@@ -26,6 +26,22 @@ export interface FAQItem {
   a: string;
 }
 
+export interface CategoryImageSlot {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  srcset?: string;
+  sizes?: string;
+}
+
+export interface CategoryImages {
+  hero?: CategoryImageSlot;
+  detail?: CategoryImageSlot;
+  context?: CategoryImageSlot;
+  og?: { src: string };
+}
+
 export interface CategoryData {
   slug: string;
   id: string; // same as slug, keeps backward compatibility with ServiceCategory
@@ -52,4 +68,5 @@ export interface CategoryData {
   whenToBook?: string;
   comparisonNote?: string;
   preparation?: string[];
+  images?: CategoryImages;
 }

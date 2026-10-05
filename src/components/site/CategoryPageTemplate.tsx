@@ -80,6 +80,13 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
           "@type": "City",
           name: city.name,
         },
+        ...(category.images?.hero
+          ? {
+              image: category.images.hero.src.startsWith("http")
+                ? category.images.hero.src
+                : `https://www.dirtquit.info${category.images.hero.src}`,
+            }
+          : {}),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: `${category.name} Sub-Services`,
@@ -146,57 +153,99 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
         {/* 2. Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-b from-background via-secondary/20 to-background py-10 sm:py-16">
           <Container>
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
-                <MapPin className="size-3.5" />
-                <span>
-                  {city.name} ({city.altName}) · Professional Cleaning
-                </span>
-              </div>
+            <div className={category.images?.hero ? "grid gap-8 lg:grid-cols-12 lg:items-center" : "max-w-3xl"}>
+              <div className={category.images?.hero ? "lg:col-span-7" : ""}>
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
+                  <MapPin className="size-3.5" />
+                  <span>
+                    {city.name} ({city.altName}) · Professional Cleaning
+                  </span>
+                </div>
 
-              <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-navy sm:text-5xl lg:text-5xl">
-                {category.name} in <span className="text-primary">{city.name}</span>
-              </h1>
+                <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-navy sm:text-5xl lg:text-5xl">
+                  {category.name} in <span className="text-primary">{city.name}</span>
+                </h1>
 
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                {category.description}
-              </p>
-              <p className="mt-2 text-sm text-foreground/80 font-medium">
-                Serving homes, apartments, and workspaces across {city.name} with trained professionals,
-                safe and effective cleaning, and flexible scheduling.
-              </p>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  {category.description}
+                </p>
+                <p className="mt-2 text-sm text-foreground/80 font-medium">
+                  Serving homes, apartments, and workspaces across {city.name} with trained professionals,
+                  safe and effective cleaning, and flexible scheduling.
+                </p>
 
-              {/* CTAs */}
-              <div className="mt-8 flex flex-wrap items-center gap-3.5">
-                <Action
-                  href="#book"
-                  size="lg"
-                  variant="primary"
-                  onClick={() => selectBookingService(category.name)}
-                >
-                  Book {category.name}
-                  <Arrow />
-                </Action>
+                {/* CTAs */}
+                <div className="mt-8 flex flex-wrap items-center gap-3.5">
+                  <Action
+                    href="#book"
+                    size="lg"
+                    variant="primary"
+                    onClick={() => selectBookingService(category.name)}
+                  >
+                    Book {category.name}
+                    <Arrow />
+                  </Action>
 
-                <WhatsAppButton
-                  source={`category_hero_${category.slug}`}
-                  size="lg"
-                  variant="whatsapp-outline"
-                  label="WhatsApp Us"
-                  message={`Hi Dirt Quit, I would like to enquire about ${category.name} in ${city.name}.`}
-                />
-              </div>
+                  <WhatsAppButton
+                    source={`category_hero_${category.slug}`}
+                    size="lg"
+                    variant="whatsapp-outline"
+                    label="WhatsApp Us"
+                    message={`Hi Dirt Quit, I would like to enquire about ${category.name} in ${city.name}.`}
+                  />
+                </div>
 
-              {/* Trust Chips (4 blocks from homepage) */}
-              <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 pt-8 border-t border-border/80">
-                {TRUST_BLOCKS.map((t) => (
-                  <div key={t.title} className="flex flex-col gap-1.5 rounded-xl bg-card p-3 shadow-2xs border border-border/60">
-                    <t.icon className="size-5 text-primary shrink-0" />
-                    <span className="text-xs font-bold text-navy">{t.title}</span>
-                    <span className="text-[11px] text-muted-foreground leading-tight">{t.text}</span>
+                {/* Mobile Hero Image: placed below intro & CTAs so H1, intro & CTAs are visible without scrolling */}
+                {category.images?.hero && (
+                  <div className="mt-8 block lg:hidden">
+                    <div className="overflow-hidden rounded-3xl border border-border/80 bg-card shadow-soft">
+                      <img
+                        src={category.images.hero.src}
+                        alt={category.images.hero.alt}
+                        width={category.images.hero.width}
+                        height={category.images.hero.height}
+                        srcSet={category.images.hero.srcset}
+                        sizes="(max-width: 1023px) 100vw, 50vw"
+                        loading="eager"
+                        // @ts-expect-error fetchpriority is a standard HTML attribute
+                        fetchpriority="high"
+                        className="h-auto w-full object-cover aspect-[4/3]"
+                      />
+                    </div>
                   </div>
-                ))}
+                )}
               </div>
+
+              {/* Desktop Hero Image: beside H1 on desktop */}
+              {category.images?.hero && (
+                <div className="hidden lg:col-span-5 lg:block">
+                  <div className="overflow-hidden rounded-3xl border border-border/80 bg-card shadow-soft">
+                    <img
+                      src={category.images.hero.src}
+                      alt={category.images.hero.alt}
+                      width={category.images.hero.width}
+                      height={category.images.hero.height}
+                      srcSet={category.images.hero.srcset}
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      loading="eager"
+                      // @ts-expect-error fetchpriority is a standard HTML attribute
+                      fetchpriority="high"
+                      className="h-auto w-full object-cover aspect-[4/3]"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Trust Chips (4 blocks from homepage) */}
+            <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 pt-8 border-t border-border/80">
+              {TRUST_BLOCKS.map((t) => (
+                <div key={t.title} className="flex flex-col gap-1.5 rounded-xl bg-card p-3 shadow-2xs border border-border/60">
+                  <t.icon className="size-5 text-primary shrink-0" />
+                  <span className="text-xs font-bold text-navy">{t.title}</span>
+                  <span className="text-[11px] text-muted-foreground leading-tight">{t.text}</span>
+                </div>
+              ))}
             </div>
           </Container>
         </section>
@@ -232,9 +281,9 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
             )}
 
             {/* Inclusions & Exclusions Grid */}
-            <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            <div className={`mt-10 grid gap-8 items-start ${category.images?.detail ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}>
               {/* Inclusions */}
-              <div className="rounded-3xl border border-primary/20 bg-card p-6 sm:p-8 shadow-soft">
+              <div className={`rounded-3xl border border-primary/20 bg-card p-6 sm:p-8 shadow-soft ${category.images?.detail ? "lg:col-span-7" : ""}`}>
                 <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-primary">
                   <CheckCircle2 className="size-4 text-primary" />
                   Cleaning Checklist & Key Inclusions
@@ -258,37 +307,59 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
                 </ul>
               </div>
 
-              {/* Exclusions & Scope Boundaries */}
-              <div className="rounded-3xl border border-border bg-secondary/30 p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-muted-foreground">
-                  <XCircle className="size-4 text-muted-foreground" />
-                  What's Excluded & Important Guidelines
+              {/* Detail Image & Exclusions Column */}
+              <div className={`space-y-6 ${category.images?.detail ? "lg:col-span-5" : ""}`}>
+                {category.images?.detail && (
+                  <div className="overflow-hidden rounded-3xl border border-border/80 bg-card shadow-soft">
+                    <img
+                      src={category.images.detail.src}
+                      alt={category.images.detail.alt}
+                      width={category.images.detail.width}
+                      height={category.images.detail.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-auto w-full object-cover aspect-[4/3]"
+                    />
+                    <div className="p-3.5 bg-card border-t border-border/50">
+                      <p className="text-xs font-medium text-muted-foreground leading-snug">
+                        {category.images.detail.alt}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Exclusions & Scope Boundaries */}
+                <div className="rounded-3xl border border-border bg-secondary/30 p-6 sm:p-8">
+                  <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-muted-foreground">
+                    <XCircle className="size-4 text-muted-foreground" />
+                    What's Excluded & Important Guidelines
+                  </div>
+                  <ul className="mt-5 space-y-3.5 text-xs sm:text-sm text-muted-foreground">
+                    {category.whatsNotIncluded.length > 0 ? (
+                      category.whatsNotIncluded.map((exc) => (
+                        <li key={exc} className="flex items-start gap-2.5">
+                          <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
+                          <span className="leading-relaxed">{exc}</span>
+                        </li>
+                      ))
+                    ) : (
+                      <>
+                        <li className="flex items-start gap-2.5">
+                          <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
+                          <span>Moving heavy structural furniture without prior customer authorization.</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
+                          <span>Cleaning interior locked wardrobes unless emptied before our crew arrives.</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
+                          <span>External glass facades on high-rise buildings beyond safe balcony reach.</span>
+                        </li>
+                      </>
+                    )}
+                  </ul>
                 </div>
-                <ul className="mt-5 space-y-3.5 text-xs sm:text-sm text-muted-foreground">
-                  {category.whatsNotIncluded.length > 0 ? (
-                    category.whatsNotIncluded.map((exc) => (
-                      <li key={exc} className="flex items-start gap-2.5">
-                        <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{exc}</span>
-                      </li>
-                    ))
-                  ) : (
-                    <>
-                      <li className="flex items-start gap-2.5">
-                        <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
-                        <span>Moving heavy structural furniture without prior customer authorization.</span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
-                        <span>Cleaning interior locked wardrobes unless emptied before our crew arrives.</span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
-                        <span>External glass facades on high-rise buildings beyond safe balcony reach.</span>
-                      </li>
-                    </>
-                  )}
-                </ul>
               </div>
             </div>
 
@@ -400,24 +471,66 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
                 subtitle="A methodical, efficient cleaning workflow designed to deliver spotless results with minimal disruption."
               />
 
-              <div className="mt-12 grid gap-6 md:grid-cols-3">
-                {category.process.map((step) => (
-                  <div
-                    key={step.step}
-                    className="relative flex flex-col justify-between rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-soft"
-                  >
-                    <div>
-                      <div className="inline-flex size-10 items-center justify-center rounded-2xl bg-primary text-sm font-extrabold text-white">
-                        0{step.step}
+              {category.images?.context ? (
+                <div className="mt-12 grid gap-8 lg:grid-cols-12 items-center">
+                  <div className="lg:col-span-5">
+                    <div className="overflow-hidden rounded-3xl border border-border/80 bg-card shadow-soft">
+                      <img
+                        src={category.images.context.src}
+                        alt={category.images.context.alt}
+                        width={category.images.context.width}
+                        height={category.images.context.height}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-auto w-full object-cover aspect-[4/3]"
+                      />
+                      <div className="p-3.5 bg-card border-t border-border/50">
+                        <p className="text-xs font-medium text-muted-foreground leading-snug">
+                          {category.images.context.alt}
+                        </p>
                       </div>
-                      <h3 className="mt-5 text-lg font-bold text-navy">{step.title}</h3>
-                      <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                        {step.desc}
-                      </p>
                     </div>
                   </div>
-                ))}
-              </div>
+
+                  <div className="lg:col-span-7 space-y-4">
+                    {category.process.map((step) => (
+                      <div
+                        key={step.step}
+                        className="relative flex gap-5 rounded-3xl border border-border bg-card p-6 shadow-soft"
+                      >
+                        <div className="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-sm font-extrabold text-white">
+                          0{step.step}
+                        </div>
+                        <div>
+                          <h3 className="text-base sm:text-lg font-bold text-navy">{step.title}</h3>
+                          <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                            {step.desc}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-12 grid gap-6 md:grid-cols-3">
+                  {category.process.map((step) => (
+                    <div
+                      key={step.step}
+                      className="relative flex flex-col justify-between rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-soft"
+                    >
+                      <div>
+                        <div className="inline-flex size-10 items-center justify-center rounded-2xl bg-primary text-sm font-extrabold text-white">
+                          0{step.step}
+                        </div>
+                        <h3 className="mt-5 text-lg font-bold text-navy">{step.title}</h3>
+                        <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </Container>
           </section>
         )}
