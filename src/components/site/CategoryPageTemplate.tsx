@@ -5,12 +5,15 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronRight,
+  ClipboardCheck,
   HelpCircle,
+  Layers,
   Leaf,
   MapPin,
   Search,
   ShieldCheck,
   Sparkles,
+  Users,
   XCircle,
 } from "lucide-react";
 import type { CategoryData, City } from "@/data/types";
@@ -324,6 +327,85 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
             </div>
           </Container>
         </section>
+
+        {/* Service Overview & Booking Guidance */}
+        {(category.whoItsFor ||
+          category.whenToBook ||
+          category.comparisonNote ||
+          (category.preparation && category.preparation.length > 0)) && (
+          <section className="section-pad bg-secondary/20 border-t border-border/60">
+            <Container>
+              <SectionHeading
+                eyebrow="Booking Guidance"
+                title={`Planning Your ${category.name} in ${city.name}`}
+                subtitle="Practical information to help you select the right service, prepare your space, and know what to expect."
+              />
+
+              <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {category.whoItsFor && (
+                  <div className="rounded-3xl border border-border bg-card p-6 shadow-soft flex flex-col justify-between">
+                    <div>
+                      <div className="inline-flex size-10 items-center justify-center rounded-2xl bg-brand-tint text-primary mb-4">
+                        <Users className="size-5" />
+                      </div>
+                      <h3 className="text-base font-bold text-navy">Who It Is For</h3>
+                      <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                        {category.whoItsFor}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {category.whenToBook && (
+                  <div className="rounded-3xl border border-border bg-card p-6 shadow-soft flex flex-col justify-between">
+                    <div>
+                      <div className="inline-flex size-10 items-center justify-center rounded-2xl bg-brand-tint text-primary mb-4">
+                        <CalendarClock className="size-5" />
+                      </div>
+                      <h3 className="text-base font-bold text-navy">When to Book</h3>
+                      <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                        {category.whenToBook}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {category.comparisonNote && (
+                  <div className="rounded-3xl border border-border bg-card p-6 shadow-soft flex flex-col justify-between">
+                    <div>
+                      <div className="inline-flex size-10 items-center justify-center rounded-2xl bg-brand-tint text-primary mb-4">
+                        <Layers className="size-5" />
+                      </div>
+                      <h3 className="text-base font-bold text-navy">How It Differs</h3>
+                      <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                        {category.comparisonNote}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {category.preparation && category.preparation.length > 0 && (
+                  <div className="rounded-3xl border border-border bg-card p-6 shadow-soft flex flex-col justify-between">
+                    <div>
+                      <div className="inline-flex size-10 items-center justify-center rounded-2xl bg-brand-tint text-primary mb-4">
+                        <ClipboardCheck className="size-5" />
+                      </div>
+                      <h3 className="text-base font-bold text-navy">What to Prepare</h3>
+                      <ul className="mt-2.5 space-y-2 text-xs sm:text-sm text-muted-foreground">
+                        {category.preparation.map((item) => (
+                          <li key={item} className="flex items-start gap-2">
+                            <span className="text-primary font-bold mt-0.5">•</span>
+                            <span className="leading-snug">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Container>
+          </section>
+        )}
 
         {/* 4. How It Works for this category */}
         {category.process.length > 0 && (

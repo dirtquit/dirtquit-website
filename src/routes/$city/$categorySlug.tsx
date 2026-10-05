@@ -21,7 +21,7 @@ export const Route = createFileRoute("/$city/$categorySlug")({
     if (!loaderData) return {};
     const { city, category } = loaderData;
     const title = `${category.name} in Bangalore | Dirt Quit`;
-    const description = `Professional ${category.name.toLowerCase()} in ${city.name} (${city.altName}). Trained professionals, safe and effective cleaning, and flexible scheduling. Book your cleaning today!`;
+    const description = `${category.name} in ${city.name} (${city.altName}): ${category.summary}`;
     const canonical = `https://www.dirtquit.info/${city.slug}/${category.slug}/`;
 
     return {

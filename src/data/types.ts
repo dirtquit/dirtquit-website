@@ -47,4 +47,8 @@ export interface CategoryData {
   relatedSlugs: string[];
   image?: string;
   imageAlt?: string;
+  whoItsFor?: string;
+  whenToBook?: string;
+  comparisonNote?: string;
+  preparation?: string[];
 }
