@@ -12,7 +12,7 @@ export const Route = createFileRoute("/service-locations/")({
   head: () => {
     const title = "Service Locations & Cities We Serve | Dirt Quit";
     const description =
-      "Explore Dirt Quit professional cleaning service locations across India. Currently live in Bengaluru (Bangalore) with 32 coverage localities.";
+      "Explore Dirt Quit cleaning service locations in Bengaluru. We cover 32 major neighborhoods with trained local cleaning teams. Check your area and book today.";
     const canonical = "https://www.dirtquit.info/service-locations/";
 
     return {

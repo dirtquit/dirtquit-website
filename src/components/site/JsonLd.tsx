@@ -9,32 +9,18 @@ export function JsonLd() {
     description:
       "Professional cleaning services for homes, apartments, offices and commercial spaces across Bengaluru. From deep cleaning and kitchens to sofas, bathrooms and move-in cleaning.",
     slogan: "Cleaner Spaces. Brighter Lives.",
-    url: "https://dirtquit.in",
+    url: "https://www.dirtquit.info/",
     telephone: PHONE_DISPLAY,
-    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Bengaluru",
       addressRegion: "Karnataka",
       addressCountry: "IN",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "12.9716",
-      longitude: "77.5946",
-    },
     areaServed: {
       "@type": "City",
       name: "Bengaluru",
     },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        opens: "08:00",
-        closes: "20:00",
-      },
-    ],
   };
 
   const faqSchema = {

@@ -10,6 +10,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "Comprehensive cleaning services tailored for independent houses, multi-story homes, and standalone residences across Bengaluru.",
     "description": "Comprehensive cleaning services tailored for independent houses, multi-story homes, and standalone residences across Bengaluru.",
+    "metaDescription": "Comprehensive home and house cleaning services across Bengaluru for independent houses and standalone residences. Schedule your trained cleaning crew today.",
     "propertyOptions": [
       "1 BHK",
       "2 BHK",
@@ -130,6 +131,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "An intensive, detailed top-to-bottom clean for homes and properties that need more than everyday surface maintenance.",
     "description": "An intensive, detailed top-to-bottom clean for homes and properties that need more than everyday surface maintenance.",
+    "metaDescription": "Intensive top-to-bottom deep cleaning services for homes and offices in Bengaluru. We remove deep grime, hidden dust, and stains. Book your cleaning today.",
     "propertyOptions": [
       "1 BHK",
       "2 BHK",
@@ -254,6 +256,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "Tailored cleaning solutions designed for high-rise flats, gated community apartments, and duplex residences in Bengaluru.",
     "description": "Tailored cleaning solutions designed for high-rise flats, gated community apartments, and duplex residences in Bengaluru.",
+    "metaDescription": "Specialized apartment and flat cleaning services across Bengaluru for gated societies and high-rise residences. Get an upfront estimate and book online now.",
     "propertyOptions": [
       "1 BHK",
       "2 BHK",
@@ -391,6 +394,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "Targeted bathroom and washroom cleaning to address stubborn hard water mineral marks, soap scum, and tile grime.",
     "description": "Targeted bathroom and washroom cleaning to address stubborn hard water mineral marks, soap scum, and tile grime.",
+    "metaDescription": "Targeted bathroom and washroom cleaning services in Bengaluru to remove hard water deposits, tile stains, and soap scum. Book your verified cleaner today.",
     "propertyOptions": [
       "1 Bathroom",
       "2 Bathrooms",
@@ -514,6 +518,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "Intensive degreasing and surface sanitization for modular kitchens, cooktops, tiles, and exhaust areas.",
     "description": "Intensive degreasing and surface sanitization for modular kitchens, cooktops, tiles, and exhaust areas.",
+    "metaDescription": "Detailed modular kitchen cleaning and degreasing services in Bengaluru for countertops, cabinets, tiles, and exhaust fans. Schedule your service visit now.",
     "propertyOptions": [
       "Standard Kitchen",
       "Large / Modular Kitchen",
@@ -640,6 +645,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Detailed vacuuming, spot stain treatment, and fabric care for sofas, recliners, cushions, and upholstery.",
     "description": "Detailed vacuuming, spot stain treatment, and fabric care for sofas, recliners, cushions, and upholstery.",
+    "metaDescription": "Professional sofa and upholstery cleaning services in Bengaluru with deep fabric vacuuming and gentle spot care. Book your upholstery cleaning visit today.",
     "propertyOptions": [
       "3 Seater",
       "4-5 Seater",
@@ -765,6 +771,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Deep extraction, spot treatment, and fiber care for area rugs, runners, and wall-to-wall carpets.",
     "description": "Deep extraction, spot treatment, and fiber care for area rugs, runners, and wall-to-wall carpets.",
+    "metaDescription": "Thorough carpet and rug cleaning services across Bengaluru using vacuum extraction and fiber care solutions. Reserve your carpet cleaning appointment today.",
     "propertyOptions": [
       "Small Rug (up to 4x6 ft)",
       "Medium Carpet (up to 6x9 ft)",
@@ -888,6 +895,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Allergen removal, dry vacuum extraction, and surface spot treatment for single, queen, and king mattresses.",
     "description": "Allergen removal, dry vacuum extraction, and surface spot treatment for single, queen, and king mattresses.",
+    "metaDescription": "Hygienic mattress cleaning services in Bengaluru with deep dust extraction and surface spot care for all bed sizes. Schedule your mattress sanitization now.",
     "propertyOptions": [
       "Single Bed Mattress",
       "Queen Bed Mattress",
@@ -1007,6 +1015,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Machine scrubbing, grout line detailing, and surface buffing for vitrified tiles, marble, granite, and hard floors.",
     "description": "Machine scrubbing, grout line detailing, and surface buffing for vitrified tiles, marble, granite, and hard floors.",
+    "metaDescription": "Expert floor and tile scrubbing services in Bengaluru for vitrified tiles, marble, granite, and grout lines. Request an instant quote and book your service.",
     "propertyOptions": [
       "Apartment Floors",
       "Villa / House Floors",
@@ -1134,6 +1143,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Streak-free cleaning for window panes, sliding channels, glass partitions, frames, and mosquito mesh screens.",
     "description": "Streak-free cleaning for window panes, sliding channels, glass partitions, frames, and mosquito mesh screens.",
+    "metaDescription": "Clear window and glass cleaning services in Bengaluru for exterior panes, sliding tracks, frames, and mesh screens. Book professional window cleaning today.",
     "propertyOptions": [
       "Standard Apartment (1-2 BHK)",
       "Large Apartment (3-4 BHK)",
@@ -1257,6 +1267,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Thorough cleaning for vacant properties to prepare spaces for new occupants or leave rental homes in clean, handover condition.",
     "description": "Thorough cleaning for vacant properties to prepare spaces for new occupants or leave rental homes in clean, handover condition.",
+    "metaDescription": "Complete move-in and move-out cleaning services in Bengaluru to prepare empty flats and houses for handovers. Reserve your vacancy cleaning service online.",
     "propertyOptions": [
       "1 BHK",
       "2 BHK",
@@ -1380,6 +1391,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "commercial",
     "summary": "Reliable cleaning for corporate offices, commercial workspaces, conference rooms, and commercial facilities.",
     "description": "Reliable cleaning for corporate offices, commercial workspaces, conference rooms, and commercial facilities.",
+    "metaDescription": "Reliable office and commercial cleaning services across Bengaluru for corporate workspaces, cabins, and meeting rooms. Schedule a flexible corporate clean.",
     "propertyOptions": [
       "Small Office (< 1,500 sq.ft)",
       "Medium Office (1,500 - 5,000 sq.ft)",
@@ -1507,6 +1519,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Specialized removal of plaster dust, paint splatter, cement residue, and builder debris from newly renovated spaces.",
     "description": "Specialized removal of plaster dust, paint splatter, cement residue, and builder debris from newly renovated spaces.",
+    "metaDescription": "Detailed post-construction cleaning services in Bengaluru to remove renovation dust, paint flecks, and builder grime. Book your site cleaning team today.",
     "propertyOptions": [
       "1-2 BHK Newly Renovated",
       "3-4 BHK Newly Renovated",
@@ -1624,6 +1637,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Washing and floor scrubbing for balconies, outdoor terraces, sit-outs, and patio spaces exposed to Bengaluru red soil.",
     "description": "Washing and floor scrubbing for balconies, outdoor terraces, sit-outs, and patio spaces exposed to Bengaluru red soil.",
+    "metaDescription": "Effective balcony and outdoor cleaning services in Bengaluru to tackle red soil, bird droppings, and drain grime. Schedule your balcony cleaning visit now.",
     "propertyOptions": [
       "1 Balcony",
       "2 Balconies",
@@ -1747,6 +1761,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Detailed cleaning and surface sanitization for refrigerators, ovens, microwaves, chimneys, and washing machines.",
     "description": "Detailed cleaning and surface sanitization for refrigerators, ovens, microwaves, chimneys, and washing machines.",
+    "metaDescription": "Detailed appliance cleaning services in Bengaluru for modular chimneys, refrigerators, ovens, and microwaves. Book verified kitchen appliance care today.",
     "propertyOptions": [
       "Refrigerator",
       "Oven / Microwave",
@@ -1868,6 +1883,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "Routine, periodic cleaning visits to keep your living spaces, floors, kitchen counters, and washrooms consistently fresh.",
     "description": "Routine, periodic cleaning visits to keep your living spaces, floors, kitchen counters, and washrooms consistently fresh.",
+    "metaDescription": "Recurring home cleaning services in Bengaluru for periodic upkeep of floors, surfaces, kitchens, and washrooms. Schedule your recurring cleaning plan now.",
     "propertyOptions": [
       "1 BHK",
       "2 BHK",
@@ -1991,6 +2007,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Tailored cleaning solutions for bespoke property requirements, event venues, studios, fitness facilities, and custom spaces.",
     "description": "Tailored cleaning solutions for bespoke property requirements, event venues, studios, fitness facilities, and custom spaces.",
+    "metaDescription": "Custom specialized cleaning services in Bengaluru for event venues, commercial studios, gyms, and unique spaces. Get your tailored cleaning estimate today.",
     "propertyOptions": [
       "Custom Residential Request",
       "Custom Commercial Space",

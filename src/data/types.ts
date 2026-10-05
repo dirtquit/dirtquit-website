@@ -35,6 +35,7 @@ export interface CategoryData {
   group: "residential" | "specialist" | "commercial";
   summary: string;
   description: string; // same as summary
+  metaDescription?: string;
   propertyOptions?: string[]; // e.g. 1 BHK, 2 BHK, 3 BHK
   chips?: string[]; // same as propertyOptions for backwards compatibility
   subServices: string[];
