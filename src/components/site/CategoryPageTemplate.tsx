@@ -24,6 +24,7 @@ import { WhyDirtQuit } from "./WhyDirtQuit";
 import { BookingForm } from "./BookingForm";
 import { MobileActionBar } from "./MobileActionBar";
 import { Action, Arrow, Container, SectionHeading, WhatsAppButton, WhatsAppIcon } from "./shared";
+import { getHouseCleaningSchema } from "./BusinessJsonLd";
 
 interface CategoryPageTemplateProps {
   category: CategoryData;
@@ -65,25 +66,7 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "HouseCleaning",
-        "@id": "https://www.dirtquit.info/#organization",
-        name: "Dirt Quit",
-        url: "https://www.dirtquit.info/",
-        telephone: "+91 82966 82403",
-        image: "https://www.dirtquit.info/logo.png",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: city.name,
-          addressRegion: city.state,
-          addressCountry: "IN",
-        },
-        areaServed: {
-          "@type": "City",
-          name: city.name,
-          sameAs: `https://en.wikipedia.org/wiki/${city.name === "Bengaluru" ? "Bangalore" : city.name}`,
-        },
-      },
+      getHouseCleaningSchema(city),
       {
         "@type": "Service",
         "@id": `${canonicalUrl}#service`,

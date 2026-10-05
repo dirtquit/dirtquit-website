@@ -1,27 +1,7 @@
 import { FAQS, PHONE_DISPLAY, SERVICES } from "@/lib/dirtquit";
+import { BusinessJsonLd } from "./BusinessJsonLd";
 
 export function JsonLd() {
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    name: "Dirt Quit",
-    alternateName: "Dirt Quit Bengaluru",
-    description:
-      "Professional cleaning services for homes, apartments, offices and commercial spaces across Bengaluru. From deep cleaning and kitchens to sofas, bathrooms and move-in cleaning.",
-    slogan: "Cleaner Spaces. Brighter Lives.",
-    url: "https://www.dirtquit.info/",
-    telephone: PHONE_DISPLAY,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Bengaluru",
-      addressRegion: "Karnataka",
-      addressCountry: "IN",
-    },
-    areaServed: {
-      "@type": "City",
-      name: "Bengaluru",
-    },
-  };
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -42,7 +22,7 @@ export function JsonLd() {
     name: "Dirt Quit",
     legalName: "Dirt Quit Cleaning Services",
     slogan: "Cleaner Spaces. Brighter Lives.",
-    logo: "https://dirtquit.in/logo.png",
+    logo: "https://www.dirtquit.info/logo.png",
     contactPoint: {
       "@type": "ContactPoint",
       telephone: PHONE_DISPLAY,
@@ -73,11 +53,7 @@ export function JsonLd() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
+      <BusinessJsonLd />
       <script
         type="application/ld+json"
         suppressHydrationWarning

@@ -26,13 +26,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Professional home and commercial cleaning services across Bengaluru. Trained crews, modern equipment, and flexible timing. Book your cleaning visit today.",
+          "Professional cleaning services for homes, apartments, and offices across Bengaluru. From deep cleaning to kitchens and bathrooms. Book your cleaning today.",
       },
       { property: "og:title", content: "Dirt Quit – Professional Cleaning Services in Bengaluru" },
       {
         property: "og:description",
         content:
-          "Professional home and commercial cleaning services across Bengaluru. Trained crews, modern equipment, and flexible timing. Book your cleaning visit today.",
+          "Professional cleaning services for homes, apartments, and offices across Bengaluru. From deep cleaning to kitchens and bathrooms. Book your cleaning today.",
       },
       { property: "og:url", content: "https://www.dirtquit.info/" },
       { property: "og:type", content: "website" },

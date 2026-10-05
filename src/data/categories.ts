@@ -256,7 +256,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "Tailored cleaning solutions designed for high-rise flats, gated community apartments, and duplex residences in Bengaluru.",
     "description": "Tailored cleaning solutions designed for high-rise flats, gated community apartments, and duplex residences in Bengaluru.",
-    "metaDescription": "Specialized apartment and flat cleaning services across Bengaluru for gated societies and high-rise residences. Get an upfront estimate and book online now.",
+    "metaDescription": "Specialized apartment and flat cleaning across Bengaluru for gated societies and high-rise residences. Request a quote and book your cleaning online now.",
     "propertyOptions": [
       "1 BHK",
       "2 BHK",
@@ -394,7 +394,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "residential",
     "summary": "Targeted bathroom and washroom cleaning to address stubborn hard water mineral marks, soap scum, and tile grime.",
     "description": "Targeted bathroom and washroom cleaning to address stubborn hard water mineral marks, soap scum, and tile grime.",
-    "metaDescription": "Targeted bathroom and washroom cleaning services in Bengaluru to remove hard water deposits, tile stains, and soap scum. Book your verified cleaner today.",
+    "metaDescription": "Targeted bathroom and washroom cleaning in Bengaluru to remove hard water deposits, tile stains, and soap scum. Schedule your bathroom cleaning visit today.",
     "propertyOptions": [
       "1 Bathroom",
       "2 Bathrooms",
@@ -895,7 +895,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Allergen removal, dry vacuum extraction, and surface spot treatment for single, queen, and king mattresses.",
     "description": "Allergen removal, dry vacuum extraction, and surface spot treatment for single, queen, and king mattresses.",
-    "metaDescription": "Hygienic mattress cleaning services in Bengaluru with deep dust extraction and surface spot care for all bed sizes. Schedule your mattress sanitization now.",
+    "metaDescription": "Hygienic mattress cleaning services in Bengaluru with deep dust extraction and surface spot care for all beds. Schedule your mattress cleaning visit now.",
     "propertyOptions": [
       "Single Bed Mattress",
       "Queen Bed Mattress",
@@ -1015,7 +1015,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Machine scrubbing, grout line detailing, and surface buffing for vitrified tiles, marble, granite, and hard floors.",
     "description": "Machine scrubbing, grout line detailing, and surface buffing for vitrified tiles, marble, granite, and hard floors.",
-    "metaDescription": "Expert floor and tile scrubbing services in Bengaluru for vitrified tiles, marble, granite, and grout lines. Request an instant quote and book your service.",
+    "metaDescription": "Expert floor and tile scrubbing services in Bengaluru for vitrified tiles, marble, granite, and grout lines. Request a quote and book your floor service.",
     "propertyOptions": [
       "Apartment Floors",
       "Villa / House Floors",
@@ -1761,7 +1761,7 @@ export const CATEGORIES: CategoryData[] = [
     "group": "specialist",
     "summary": "Detailed cleaning and surface sanitization for refrigerators, ovens, microwaves, chimneys, and washing machines.",
     "description": "Detailed cleaning and surface sanitization for refrigerators, ovens, microwaves, chimneys, and washing machines.",
-    "metaDescription": "Detailed appliance cleaning services in Bengaluru for modular chimneys, refrigerators, ovens, and microwaves. Book verified kitchen appliance care today.",
+    "metaDescription": "Detailed appliance cleaning services in Bengaluru for modular chimneys, refrigerators, ovens, and microwaves. Book your kitchen appliance cleaning today.",
     "propertyOptions": [
       "Refrigerator",
       "Oven / Microwave",

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/$city/")({
     if (!loaderData) return {};
     const { city } = loaderData;
     const title = `Cleaning Services in ${city.name} (${city.altName}) | Dirt Quit`;
-    const description = `Reliable home and commercial cleaning services across ${city.name}. Expert teams for deep cleaning, kitchens, bathrooms, and sofas. Book your slot online today.`;
+    const description = `Reliable home and commercial cleaning services across ${city.name}. Trained professionals for deep cleaning, kitchens, and sofas. Book your slot online today.`;
     const canonical = `https://www.dirtquit.info/${city.slug}/`;
 
     return {
