@@ -17,6 +17,28 @@ import { MobileActionBar } from "@/components/site/MobileActionBar";
 import { JsonLd } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      {
+        title:
+          "Dirt Quit – Professional Cleaning Services in Bengaluru | Cleaner Spaces. Brighter Lives.",
+      },
+      {
+        name: "description",
+        content:
+          "Professional cleaning services for homes, apartments, offices and commercial spaces across Bengaluru. From deep cleaning and kitchens to sofas, bathrooms and move-in cleaning.",
+      },
+      { property: "og:title", content: "Dirt Quit – Professional Cleaning Services in Bengaluru" },
+      {
+        property: "og:description",
+        content:
+          "Professional cleaning services for homes, apartments, offices and commercial spaces across Bengaluru. Cleaner Spaces. Brighter Lives.",
+      },
+      { property: "og:url", content: "https://www.dirtquit.info/" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.dirtquit.info/" }],
+  }),
   component: Index,
 });
 

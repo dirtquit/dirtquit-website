@@ -1,23 +1,25 @@
-import { MapPin, Menu, Phone, Sparkles, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { PHONE_DISPLAY, telLink, track } from "@/lib/dirtquit";
+import { useCity } from "@/lib/useCity";
 import { BookButton, Container, WhatsAppButton } from "./shared";
 import { Logo } from "./Logo";
+import { LocationSelector } from "./LocationSelector";
+import { ServicesMegaMenu } from "./ServicesMegaMenu";
 
-const MAIN_NAV = [
-  { label: "Home", href: "#top" },
-  { label: "Services", href: "#services" },
-  { label: "Why Dirt Quit", href: "#why" },
-  { label: "How It Works", href: "#how" },
-  { label: "Areas", href: "#areas" },
-  { label: "FAQs", href: "#faqs" },
-  { label: "Contact", href: "#book" },
+const NAV_ITEMS_AFTER_SERVICES = [
+  { label: "Why Dirt Quit", href: "/#why" },
+  { label: "How It Works", href: "/#how" },
+  { label: "Areas", href: "/service-locations/" },
+  { label: "FAQs", href: "/#faqs" },
+  { label: "Contact", href: "/#book" },
 ];
 
 export function Header() {
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
+  const { city } = useCity();
 
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 20);
@@ -28,7 +30,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 transition-all duration-200">
-      {/* Top Utility Bar - Clean single-line info strip, NO duplicate navigation or duplicate buttons */}
+      {/* Top Utility Bar */}
       <div
         className={cn(
           "hidden border-b border-white/10 bg-navy text-white/85 transition-all duration-300 lg:block",
@@ -37,24 +39,34 @@ export function Header() {
       >
         <Container className="flex h-full items-center justify-between text-xs">
           <div className="flex items-center gap-4">
-            <span className="inline-flex items-center gap-1.5 font-medium text-white">
-              <MapPin className="size-3 text-primary" /> Bengaluru, Karnataka
-            </span>
+            <LocationSelector tone="dark" />
             <span className="text-white/30">|</span>
             <div className="flex items-center gap-2 text-white/65 text-[11px]">
-              <a href="#services" className="hover:text-white transition-colors">
+              <a
+                href={`/${city.slug}/home-cleaning/`}
+                className="hover:text-white transition-colors"
+              >
                 Home
               </a>
               <span>·</span>
-              <a href="#services" className="hover:text-white transition-colors">
+              <a
+                href={`/${city.slug}/office-cleaning/`}
+                className="hover:text-white transition-colors"
+              >
                 Office
               </a>
               <span>·</span>
-              <a href="#services" className="hover:text-white transition-colors">
+              <a
+                href={`/${city.slug}/office-cleaning/`}
+                className="hover:text-white transition-colors"
+              >
                 Commercial
               </a>
               <span>·</span>
-              <a href="#services" className="hover:text-white transition-colors">
+              <a
+                href={`/${city.slug}/apartment-cleaning/`}
+                className="hover:text-white transition-colors"
+              >
                 Villas
               </a>
             </div>
@@ -92,13 +104,20 @@ export function Header() {
       >
         <Container className="flex h-18 sm:h-20 items-center justify-between">
           {/* Official DIRT QUIT Logo */}
-          <a href="#top" className="flex items-center group py-1" aria-label="Dirt Quit home">
+          <a href="/#top" className="flex items-center group py-1" aria-label="Dirt Quit home">
             <Logo className="h-12 sm:h-14 transition-transform group-hover:scale-[1.02]" />
           </a>
 
           {/* Main Desktop Navigation Links */}
           <nav className="hidden items-center gap-7 text-sm font-semibold text-foreground/80 lg:flex">
-            {MAIN_NAV.map((n) => (
+            <a href="/#top" className="transition-colors hover:text-primary py-1">
+              Home
+            </a>
+
+            {/* Mega Menu for Services */}
+            <ServicesMegaMenu />
+
+            {NAV_ITEMS_AFTER_SERVICES.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
@@ -142,12 +161,22 @@ export function Header() {
           <div className="border-t border-border bg-card p-5 lg:hidden shadow-lift animate-in fade-in slide-in-from-top-2">
             <div className="flex flex-col gap-2">
               <div className="pb-3 border-b border-border text-xs text-muted-foreground flex items-center justify-between">
-                <span className="inline-flex items-center gap-1 font-medium text-navy">
-                  <MapPin className="size-3.5 text-primary" /> Bengaluru, Karnataka
-                </span>
+                <LocationSelector tone="light" />
                 <span className="font-semibold text-navy">{PHONE_DISPLAY}</span>
               </div>
-              {MAIN_NAV.map((n) => (
+
+              <a
+                href="/#top"
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-2 text-base font-semibold text-foreground hover:bg-secondary hover:text-primary transition-colors"
+              >
+                Home
+              </a>
+
+              {/* Mobile Services Accordion */}
+              <ServicesMegaMenu isMobile onSelect={() => setOpen(false)} />
+
+              {NAV_ITEMS_AFTER_SERVICES.map((n) => (
                 <a
                   key={n.href}
                   href={n.href}

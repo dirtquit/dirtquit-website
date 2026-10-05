@@ -1,42 +1,30 @@
-import { MapPin, MessageCircle, Phone } from "lucide-react";
-import { PHONE_DISPLAY, selectBookingService, telLink, track } from "@/lib/dirtquit";
+import { Phone } from "lucide-react";
+import { PHONE_DISPLAY, telLink, track } from "@/lib/dirtquit";
+import { CATEGORIES } from "@/data/categories";
+import { useCity } from "@/lib/useCity";
 import { Container, WhatsAppButton } from "./shared";
 import { Logo } from "./Logo";
+import { LocationSelector } from "./LocationSelector";
 
 const QUICK_LINKS = [
-  { label: "Home", href: "#top" },
-  { label: "Services", href: "#services" },
-  { label: "Why Dirt Quit", href: "#why" },
-  { label: "How It Works", href: "#how" },
-  { label: "Areas We Serve", href: "#areas" },
-  { label: "FAQs", href: "#faqs" },
-  { label: "Contact", href: "#book" },
-];
-
-const POPULAR_SERVICES = [
-  "Home Cleaning",
-  "Deep Cleaning",
-  "Kitchen Cleaning",
-  "Bathroom Cleaning",
-  "Sofa Cleaning",
-  "Carpet Cleaning",
-  "Mattress Cleaning",
-  "Floor Cleaning",
-  "Window Cleaning",
-  "Office Cleaning",
-  "Move-In Cleaning",
-  "Move-Out Cleaning",
-  "Commercial Cleaning",
+  { label: "Home", href: "/#top" },
+  { label: "Why Dirt Quit", href: "/#why" },
+  { label: "How It Works", href: "/#how" },
+  { label: "Areas We Serve", href: "/service-locations/" },
+  { label: "FAQs", href: "/#faqs" },
+  { label: "Book a Cleaning", href: "/#book" },
 ];
 
 export function Footer() {
+  const { city } = useCity();
+
   return (
     <footer className="border-t border-border bg-card text-foreground">
       <Container className="py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand Info */}
           <div>
-            <a href="#top" className="inline-block group py-1" aria-label="Dirt Quit home">
+            <a href="/#top" className="inline-block group py-1" aria-label="Dirt Quit home">
               <Logo className="h-12 sm:h-14 transition-transform group-hover:scale-[1.02]" />
             </a>
 
@@ -45,10 +33,9 @@ export function Footer() {
               across Bengaluru.
             </p>
 
-            <div className="mt-6 flex flex-col gap-2.5 text-xs sm:text-sm font-semibold text-foreground/80">
+            <div className="mt-6 flex flex-col gap-3 text-xs sm:text-sm font-semibold text-foreground/80">
               <div className="flex items-center gap-2">
-                <MapPin className="size-4 text-primary shrink-0" />
-                <span>Bengaluru, Karnataka</span>
+                <LocationSelector tone="light" />
               </div>
               <a
                 href={telLink()}
@@ -86,21 +73,20 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Popular Services */}
+          {/* All 17 Cleaning Services in Bengaluru */}
           <div className="sm:col-span-2 lg:col-span-2">
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-navy">
-              Popular Services in Bengaluru
+              Cleaning Services in {city.name} ({CATEGORIES.length})
             </h4>
             <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs sm:text-sm font-medium text-muted-foreground">
-              {POPULAR_SERVICES.map((srv) => (
-                <li key={srv}>
-                  <button
-                    type="button"
-                    onClick={() => selectBookingService(srv)}
-                    className="text-left hover:text-primary transition-colors"
+              {CATEGORIES.map((cat) => (
+                <li key={cat.slug}>
+                  <a
+                    href={`/${city.slug}/${cat.slug}/`}
+                    className="text-left hover:text-primary transition-colors block truncate"
                   >
-                    {srv}
-                  </button>
+                    {cat.name}
+                  </a>
                 </li>
               ))}
             </ul>

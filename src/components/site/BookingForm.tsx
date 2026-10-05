@@ -34,13 +34,23 @@ type FormState = {
   details: string;
 };
 
-export function BookingForm() {
+interface BookingFormProps {
+  initialService?: string;
+  initialCity?: string;
+  pagePath?: string;
+}
+
+export function BookingForm({
+  initialService,
+  initialCity = "Bengaluru",
+  pagePath,
+}: BookingFormProps = {}) {
   const [formData, setFormData] = useState<FormState>({
     name: "",
     phone: "",
     whatsapp: "",
     sameAsPhone: true,
-    service: "Deep Cleaning",
+    service: initialService || "Deep Cleaning",
     propertyType: "2 BHK",
     location: "Bellandur",
     date: "",
@@ -51,6 +61,13 @@ export function BookingForm() {
   const [hasStarted, setHasStarted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submittedData, setSubmittedData] = useState<FormState | null>(null);
+
+  // Sync if initialService prop changes
+  useEffect(() => {
+    if (initialService) {
+      setFormData((prev) => ({ ...prev, service: initialService }));
+    }
+  }, [initialService]);
 
   // Listen for service selection from service cards or BHK chips
   useEffect(() => {
@@ -81,10 +98,17 @@ export function BookingForm() {
     };
   }, []);
 
+  const currentPath =
+    pagePath || (typeof window !== "undefined" ? window.location.pathname : "/");
+
   const handleFieldChange = <K extends keyof FormState>(field: K, value: FormState[K]) => {
     if (!hasStarted) {
       setHasStarted(true);
-      track("booking_form_start");
+      track("booking_form_start", {
+        service: formData.service,
+        city: initialCity,
+        page_path: currentPath,
+      });
     }
     setFormData((prev) => {
       const next = { ...prev, [field]: value };
@@ -101,10 +125,14 @@ export function BookingForm() {
       service: formData.service,
       propertyType: formData.propertyType,
       location: formData.location,
+      city: initialCity,
+      page_path: currentPath,
     });
     track("quote_request", {
       service: formData.service,
       location: formData.location,
+      city: initialCity,
+      page_path: currentPath,
     });
 
     setSubmittedData(formData);
@@ -112,12 +140,12 @@ export function BookingForm() {
   };
 
   const getWhatsAppMessage = (data: typeof formData) => {
-    return `Hi Dirt Quit, I would like to request a cleaning quote:
+    return `Hi Dirt Quit, I would like to request a cleaning quote for ${data.service} in ${initialCity}:
 • Name: ${data.name || "Customer"}
 • Phone: ${data.phone || "Not provided"}
 • Service: ${data.service}
 • Property: ${data.propertyType}
-• Locality: ${data.location}, Bengaluru
+• Locality: ${data.location}, ${initialCity}
 • Preferred Date: ${data.date || "Next available"}
 • Time Slot: ${data.time}
 ${data.details ? `• Details: ${data.details}` : ""}

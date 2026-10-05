@@ -28,6 +28,7 @@ import bathImg from "@/assets/bath-after.jpg";
 import sofaImg from "@/assets/sofa-after.jpg";
 import finalCtaImg from "@/assets/final-cta.jpg";
 import { cn } from "@/lib/utils";
+import { useCity } from "@/lib/useCity";
 import {
   SERVICES,
   selectBookingService,
@@ -108,9 +109,11 @@ function ServiceCard({
   onOpenDetails: (service: ServiceCategory) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const { city } = useCity();
   const Icon = ICONS[service.id] || Sparkles;
   const imageUrl = SERVICE_IMAGES[service.id] || heroImg;
   const visibleItems = expanded ? service.items : service.items.slice(0, 6);
+  const categoryUrl = `/${city.slug}/${service.slug || service.id}/`;
 
   const handleBook = () => {
     selectBookingService(service.title);
@@ -119,8 +122,8 @@ function ServiceCard({
   return (
     <article className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 sm:p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lift">
       <div>
-        {/* Visual Stock Image Header */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-secondary/50 mb-5 border border-border/50">
+        {/* Visual Stock Image Header linking to Category Page */}
+        <a href={categoryUrl} className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-secondary/50 mb-5 border border-border/50">
           <img
             src={imageUrl}
             alt={`${service.title} service in Bengaluru`}
@@ -145,12 +148,14 @@ function ServiceCard({
               </span>
             </div>
           </div>
-        </div>
+        </a>
 
         {/* Title & Description */}
-        <h3 className="text-xl font-extrabold text-navy group-hover:text-primary transition-colors">
-          {service.title}
-        </h3>
+        <a href={categoryUrl} className="block">
+          <h3 className="text-xl font-extrabold text-navy group-hover:text-primary transition-colors">
+            {service.title}
+          </h3>
+        </a>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
 
         {/* Selectable BHK Chips for Apartment Cleaning */}
