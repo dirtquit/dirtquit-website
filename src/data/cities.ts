@@ -109,6 +109,9 @@ export function getDefaultCity(): City {
 export function getCityBySlug(slug: string): City | undefined {
   const normalized = (slug || "").toLowerCase().trim();
   return CITIES.find(
-    (c) => c.slug === normalized || c.name.toLowerCase() === normalized || c.altName.toLowerCase() === normalized,
+    (c) =>
+      c.slug === normalized ||
+      c.name.toLowerCase() === normalized ||
+      c.altName.toLowerCase() === normalized,
   );
 }

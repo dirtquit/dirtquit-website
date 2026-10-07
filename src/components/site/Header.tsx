@@ -12,6 +12,7 @@ const NAV_ITEMS_AFTER_SERVICES = [
   { label: "Why Dirt Quit", href: "/#why" },
   { label: "How It Works", href: "/#how" },
   { label: "Areas", href: "/service-locations/" },
+  { label: "Blog", href: "/blog/" },
   { label: "FAQs", href: "/#faqs" },
   { label: "Contact", href: "/#book" },
 ];

@@ -48,12 +48,7 @@ function CityHubRouteComponent() {
       <Header />
       <div className="border-b border-border/40 bg-secondary/20">
         <Container>
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: city.name },
-            ]}
-          />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: city.name }]} />
         </Container>
       </div>
 
@@ -73,8 +68,8 @@ function CityHubRouteComponent() {
               </h1>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Complete residential and commercial cleaning solutions across {city.name}. From full
-                house deep cleans to sofa shampooing and office maintenance, we bring verified professionals,
-                modern machines, and upfront pricing to every neighborhood.
+                house deep cleans to sofa shampooing and office maintenance, we bring verified
+                professionals, modern machines, and upfront pricing to every neighborhood.
               </p>
             </div>
           </Container>

@@ -91,7 +91,10 @@ function ServiceCard({
     <article className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 sm:p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lift">
       <div>
         {/* Visual Stock Image Header linking to Category Page */}
-        <a href={categoryUrl} className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-secondary/50 mb-5 border border-border/50">
+        <a
+          href={categoryUrl}
+          className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-secondary/50 mb-5 border border-border/50"
+        >
           {imageUrl ? (
             <img
               src={imageUrl}

@@ -12,8 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CityIndexRouteImport } from './routes/$city/index'
 import { Route as CityCategorySlugRouteImport } from './routes/$city/$categorySlug'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as DevImageReviewRouteImport } from './routes/dev/image-review'
 import { Route as ServiceLocationsIndexRouteImport } from './routes/service-locations/index'
+import { Route as StudioIndexRouteImport } from './routes/studio/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -30,6 +33,16 @@ const CityCategorySlugRoute = CityCategorySlugRouteImport.update({
   path: '/$city/$categorySlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DevImageReviewRoute = DevImageReviewRouteImport.update({
   id: '/dev/image-review',
   path: '/dev/image-review',
@@ -40,59 +53,85 @@ const ServiceLocationsIndexRoute = ServiceLocationsIndexRouteImport.update({
   path: '/service-locations/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudioIndexRoute = StudioIndexRouteImport.update({
+  id: '/studio/',
+  path: '/studio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$city/$categorySlug': typeof CityCategorySlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/dev/image-review': typeof DevImageReviewRoute
   '/$city/': typeof CityIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/service-locations/': typeof ServiceLocationsIndexRoute
+  '/studio/': typeof StudioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$city/$categorySlug': typeof CityCategorySlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/dev/image-review': typeof DevImageReviewRoute
   '/$city': typeof CityIndexRoute
+  '/blog': typeof BlogIndexRoute
   '/service-locations': typeof ServiceLocationsIndexRoute
+  '/studio': typeof StudioIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$city/$categorySlug': typeof CityCategorySlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/dev/image-review': typeof DevImageReviewRoute
   '/$city/': typeof CityIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/service-locations/': typeof ServiceLocationsIndexRoute
+  '/studio/': typeof StudioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/$city/$categorySlug'
+    | '/blog/$slug'
     | '/dev/image-review'
     | '/$city/'
+    | '/blog/'
     | '/service-locations/'
+    | '/studio/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$city/$categorySlug'
+    | '/blog/$slug'
     | '/dev/image-review'
     | '/$city'
+    | '/blog'
     | '/service-locations'
+    | '/studio'
   id:
     | '__root__'
     | '/'
     | '/$city/$categorySlug'
+    | '/blog/$slug'
     | '/dev/image-review'
     | '/$city/'
+    | '/blog/'
     | '/service-locations/'
+    | '/studio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CityCategorySlugRoute: typeof CityCategorySlugRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   DevImageReviewRoute: typeof DevImageReviewRoute
   CityIndexRoute: typeof CityIndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ServiceLocationsIndexRoute: typeof ServiceLocationsIndexRoute
+  StudioIndexRoute: typeof StudioIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -118,6 +157,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CityCategorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dev/image-review': {
       id: '/dev/image-review'
       path: '/dev/image-review'
@@ -132,15 +185,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceLocationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studio/': {
+      id: '/studio/'
+      path: '/studio'
+      fullPath: '/studio/'
+      preLoaderRoute: typeof StudioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CityCategorySlugRoute: CityCategorySlugRoute,
+  BlogSlugRoute: BlogSlugRoute,
   DevImageReviewRoute: DevImageReviewRoute,
   CityIndexRoute: CityIndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ServiceLocationsIndexRoute: ServiceLocationsIndexRoute,
+  StudioIndexRoute: StudioIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

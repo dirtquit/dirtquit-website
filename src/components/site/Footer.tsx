@@ -11,6 +11,7 @@ const QUICK_LINKS = [
   { label: "Why Dirt Quit", href: "/#why" },
   { label: "How It Works", href: "/#how" },
   { label: "Areas We Serve", href: "/service-locations/" },
+  { label: "Cleaning Guides & Blog", href: "/blog/" },
   { label: "FAQs", href: "/#faqs" },
   { label: "Book a Cleaning", href: "/#book" },
 ];

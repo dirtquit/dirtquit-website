@@ -30,7 +30,9 @@ export const Route = createFileRoute("/$city/$categorySlug")({
     const canonical = `https://www.dirtquit.info/${city.slug}/${category.slug}/`;
     const ogImageSrc = category.images?.og?.src || category.images?.hero?.src;
     const ogImageUrl = ogImageSrc
-      ? (ogImageSrc.startsWith("http") ? ogImageSrc : `https://www.dirtquit.info${ogImageSrc}`)
+      ? ogImageSrc.startsWith("http")
+        ? ogImageSrc
+        : `https://www.dirtquit.info${ogImageSrc}`
       : undefined;
 
     return {

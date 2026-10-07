@@ -80,7 +80,12 @@ export function Hero() {
           {/* Primary & Secondary CTAs */}
           <div className="mt-8 flex flex-wrap items-center gap-3.5">
             <BookButton source="hero" size="lg" label="Book a Cleaning" />
-            <WhatsAppButton source="hero" size="lg" variant="whatsapp-outline" label="WhatsApp Us" />
+            <WhatsAppButton
+              source="hero"
+              size="lg"
+              variant="whatsapp-outline"
+              label="WhatsApp Us"
+            />
           </div>
 
           {/* Under CTA Promises Checklist */}

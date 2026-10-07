@@ -98,8 +98,7 @@ export function BookingForm({
     };
   }, []);
 
-  const currentPath =
-    pagePath || (typeof window !== "undefined" ? window.location.pathname : "/");
+  const currentPath = pagePath || (typeof window !== "undefined" ? window.location.pathname : "/");
 
   const handleFieldChange = <K extends keyof FormState>(field: K, value: FormState[K]) => {
     if (!hasStarted) {

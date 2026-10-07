@@ -36,12 +36,7 @@ function ServiceLocationsRouteComponent() {
       <Header />
       <div className="border-b border-border/40 bg-secondary/20">
         <Container>
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Service Locations" },
-            ]}
-          />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Service Locations" }]} />
         </Container>
       </div>
 
@@ -53,8 +48,8 @@ function ServiceLocationsRouteComponent() {
                 Service Locations & <span className="text-primary">Cities We Serve</span>
               </h1>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Dirt Quit is actively expanding across major Indian metropolitan areas. Select your city
-                below to see available residential and commercial cleaning services.
+                Dirt Quit is actively expanding across major Indian metropolitan areas. Select your
+                city below to see available residential and commercial cleaning services.
               </p>
             </div>
 

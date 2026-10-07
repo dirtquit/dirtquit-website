@@ -19,7 +19,14 @@ import {
 import type { CategoryData, City } from "@/data/types";
 import { getCategoryBySlug } from "@/data/categories";
 import { getCategoryImages } from "@/data/categoryImages";
-import { selectBookingArea, selectBookingService, telLink, track, whatsappLink, PHONE_DISPLAY } from "@/lib/dirtquit";
+import {
+  selectBookingArea,
+  selectBookingService,
+  telLink,
+  track,
+  whatsappLink,
+  PHONE_DISPLAY,
+} from "@/lib/dirtquit";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { WhyDirtQuit } from "./WhyDirtQuit";
 import { BookingForm } from "./BookingForm";
@@ -154,7 +161,11 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
         {/* 2. Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-b from-background via-secondary/20 to-background py-10 sm:py-16">
           <Container>
-            <div className={category.images?.hero ? "grid gap-8 lg:grid-cols-12 lg:items-center" : "max-w-3xl"}>
+            <div
+              className={
+                category.images?.hero ? "grid gap-8 lg:grid-cols-12 lg:items-center" : "max-w-3xl"
+              }
+            >
               <div className={category.images?.hero ? "lg:col-span-7" : ""}>
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
                   <MapPin className="size-3.5" />
@@ -171,8 +182,8 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
                   {category.description}
                 </p>
                 <p className="mt-2 text-sm text-foreground/80 font-medium">
-                  Serving homes, apartments, and workspaces across {city.name} with trained professionals,
-                  safe and effective cleaning, and flexible scheduling.
+                  Serving homes, apartments, and workspaces across {city.name} with trained
+                  professionals, safe and effective cleaning, and flexible scheduling.
                 </p>
 
                 {/* CTAs */}
@@ -241,7 +252,10 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
             {/* Trust Chips (4 blocks from homepage) */}
             <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 pt-8 border-t border-border/80">
               {TRUST_BLOCKS.map((t) => (
-                <div key={t.title} className="flex flex-col gap-1.5 rounded-xl bg-card p-3 shadow-2xs border border-border/60">
+                <div
+                  key={t.title}
+                  className="flex flex-col gap-1.5 rounded-xl bg-card p-3 shadow-2xs border border-border/60"
+                >
                   <t.icon className="size-5 text-primary shrink-0" />
                   <span className="text-xs font-bold text-navy">{t.title}</span>
                   <span className="text-[11px] text-muted-foreground leading-tight">{t.text}</span>
@@ -282,29 +296,31 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
             )}
 
             {/* Inclusions & Exclusions Grid */}
-            <div className={`mt-10 grid gap-8 items-start ${category.images?.detail ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}>
+            <div
+              className={`mt-10 grid gap-8 items-start ${category.images?.detail ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}
+            >
               {/* Inclusions */}
-              <div className={`rounded-3xl border border-primary/20 bg-card p-6 sm:p-8 shadow-soft ${category.images?.detail ? "lg:col-span-7" : ""}`}>
+              <div
+                className={`rounded-3xl border border-primary/20 bg-card p-6 sm:p-8 shadow-soft ${category.images?.detail ? "lg:col-span-7" : ""}`}
+              >
                 <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-primary">
                   <CheckCircle2 className="size-4 text-primary" />
                   Cleaning Checklist & Key Inclusions
                 </div>
                 <ul className="mt-5 space-y-3.5 text-xs sm:text-sm text-foreground/90">
-                  {category.whatsIncluded.length > 0 ? (
-                    category.whatsIncluded.map((inc) => (
-                      <li key={inc} className="flex items-start gap-2.5">
-                        <CheckCircle2 className="size-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{inc}</span>
-                      </li>
-                    ))
-                  ) : (
-                    category.subServices.map((sub) => (
-                      <li key={sub} className="flex items-start gap-2.5">
-                        <CheckCircle2 className="size-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{sub}</span>
-                      </li>
-                    ))
-                  )}
+                  {category.whatsIncluded.length > 0
+                    ? category.whatsIncluded.map((inc) => (
+                        <li key={inc} className="flex items-start gap-2.5">
+                          <CheckCircle2 className="size-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="leading-relaxed">{inc}</span>
+                        </li>
+                      ))
+                    : category.subServices.map((sub) => (
+                        <li key={sub} className="flex items-start gap-2.5">
+                          <CheckCircle2 className="size-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="leading-relaxed">{sub}</span>
+                        </li>
+                      ))}
                 </ul>
               </div>
 
@@ -347,15 +363,22 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
                       <>
                         <li className="flex items-start gap-2.5">
                           <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
-                          <span>Moving heavy structural furniture without prior customer authorization.</span>
+                          <span>
+                            Moving heavy structural furniture without prior customer authorization.
+                          </span>
                         </li>
                         <li className="flex items-start gap-2.5">
                           <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
-                          <span>Cleaning interior locked wardrobes unless emptied before our crew arrives.</span>
+                          <span>
+                            Cleaning interior locked wardrobes unless emptied before our crew
+                            arrives.
+                          </span>
                         </li>
                         <li className="flex items-start gap-2.5">
                           <XCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
-                          <span>External glass facades on high-rise buildings beyond safe balcony reach.</span>
+                          <span>
+                            External glass facades on high-rise buildings beyond safe balcony reach.
+                          </span>
                         </li>
                       </>
                     )}
@@ -626,7 +649,8 @@ export function CategoryPageTemplate({ category, city }: CategoryPageTemplatePro
                 </h3>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
                   Cleaning requirements vary by property size, furnished status, condition and scope
-                  of work. Share your property layout and requirements to receive an exact, transparent quote with no hidden charges.
+                  of work. Share your property layout and requirements to receive an exact,
+                  transparent quote with no hidden charges.
                 </p>
               </div>
 

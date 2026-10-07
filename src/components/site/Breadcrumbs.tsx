@@ -43,9 +43,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
               ) : (
                 <span className="font-semibold text-foreground/90">{item.label}</span>
               )}
-              {!isLast && (
-                <ChevronRight className="size-3 text-muted-foreground/40 shrink-0" />
-              )}
+              {!isLast && <ChevronRight className="size-3 text-muted-foreground/40 shrink-0" />}
             </li>
           );
         })}

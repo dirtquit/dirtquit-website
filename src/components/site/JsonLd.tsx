@@ -2,7 +2,6 @@ import { FAQS, PHONE_DISPLAY, SERVICES } from "@/lib/dirtquit";
 import { BusinessJsonLd } from "./BusinessJsonLd";
 
 export function JsonLd() {
-
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { CITIES } from "../src/data/cities.ts";
 import { CATEGORIES } from "../src/data/categories.ts";
+import { BLOG_POSTS } from "../src/data/blogData.ts";
 
 const BASE_URL = "https://www.dirtquit.info";
 
@@ -33,7 +34,24 @@ entries.push({
   priority: 0.8,
 });
 
-// 3. For each active live city in cities data
+// 3. Blog Knowledge Hub Index
+entries.push({
+  url: `${BASE_URL}/blog/`,
+  changefreq: "daily",
+  priority: 0.9,
+});
+
+// 4. Individual Blog Articles
+for (const post of BLOG_POSTS) {
+  if (post.seo?.noIndex) continue;
+  entries.push({
+    url: `${BASE_URL}/blog/${post.slug}/`,
+    changefreq: "weekly",
+    priority: 0.85,
+  });
+}
+
+// 5. For each active live city in cities data
 for (const city of CITIES) {
   if (!city.isLive) continue;
 

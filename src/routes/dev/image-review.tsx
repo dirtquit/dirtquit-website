@@ -25,7 +25,9 @@ function ImageReviewPage() {
             Category Image Review Contact Sheet
           </h1>
           <p className="mt-2 text-sm text-slate-400 max-w-3xl">
-            Visual inspection grid for all 17 cleaning categories plus the 18th custom card. Every slot is self-hosted with zero external Unsplash calls, native aspect ratios preserved without artificial upscaling, and strict descriptive alt tags.
+            Visual inspection grid for all 17 cleaning categories plus the 18th custom card. Every
+            slot is self-hosted with zero external Unsplash calls, native aspect ratios preserved
+            without artificial upscaling, and strict descriptive alt tags.
           </p>
         </header>
 
@@ -48,7 +50,8 @@ function ImageReviewPage() {
               />
             </div>
             <p className="mt-2 text-xs text-slate-400">
-              Slot: Homepage 18th Card · Aspect: 16:10 · Alt: "Custom space and specialty cleaning in Bengaluru"
+              Slot: Homepage 18th Card · Aspect: 16:10 · Alt: "Custom space and specialty cleaning
+              in Bengaluru"
             </p>
           </div>
         </section>
@@ -90,7 +93,9 @@ function ImageReviewPage() {
                   <div className="flex flex-col rounded-2xl bg-slate-900/80 border border-slate-700/60 p-4">
                     <div className="flex items-center justify-between text-xs font-mono mb-2">
                       <span className="font-bold text-emerald-400 uppercase">1. Hero Slot</span>
-                      <span className="text-slate-400">{imgSet.hero.width}×{imgSet.hero.height}</span>
+                      <span className="text-slate-400">
+                        {imgSet.hero.width}×{imgSet.hero.height}
+                      </span>
                     </div>
                     <div className="overflow-hidden rounded-xl border border-slate-800 bg-black aspect-[4/3] relative">
                       <img
@@ -100,7 +105,9 @@ function ImageReviewPage() {
                       />
                     </div>
                     <div className="mt-3 text-[11px] text-slate-300 leading-snug">
-                      <strong className="text-slate-400 block text-[10px] uppercase font-mono">Alt Text:</strong>
+                      <strong className="text-slate-400 block text-[10px] uppercase font-mono">
+                        Alt Text:
+                      </strong>
                       "{imgSet.hero.alt}"
                     </div>
                   </div>
@@ -109,7 +116,9 @@ function ImageReviewPage() {
                   <div className="flex flex-col rounded-2xl bg-slate-900/80 border border-slate-700/60 p-4">
                     <div className="flex items-center justify-between text-xs font-mono mb-2">
                       <span className="font-bold text-sky-400 uppercase">2. Detail Slot</span>
-                      <span className="text-slate-400">{imgSet.detail.width}×{imgSet.detail.height}</span>
+                      <span className="text-slate-400">
+                        {imgSet.detail.width}×{imgSet.detail.height}
+                      </span>
                     </div>
                     <div className="overflow-hidden rounded-xl border border-slate-800 bg-black aspect-[4/3] relative">
                       <img
@@ -119,7 +128,9 @@ function ImageReviewPage() {
                       />
                     </div>
                     <div className="mt-3 text-[11px] text-slate-300 leading-snug">
-                      <strong className="text-slate-400 block text-[10px] uppercase font-mono">Alt Text:</strong>
+                      <strong className="text-slate-400 block text-[10px] uppercase font-mono">
+                        Alt Text:
+                      </strong>
                       "{imgSet.detail.alt}"
                     </div>
                   </div>
@@ -128,7 +139,9 @@ function ImageReviewPage() {
                   <div className="flex flex-col rounded-2xl bg-slate-900/80 border border-slate-700/60 p-4">
                     <div className="flex items-center justify-between text-xs font-mono mb-2">
                       <span className="font-bold text-purple-400 uppercase">3. Context Slot</span>
-                      <span className="text-slate-400">{imgSet.context.width}×{imgSet.context.height}</span>
+                      <span className="text-slate-400">
+                        {imgSet.context.width}×{imgSet.context.height}
+                      </span>
                     </div>
                     <div className="overflow-hidden rounded-xl border border-slate-800 bg-black aspect-[4/3] relative">
                       <img
@@ -138,7 +151,9 @@ function ImageReviewPage() {
                       />
                     </div>
                     <div className="mt-3 text-[11px] text-slate-300 leading-snug">
-                      <strong className="text-slate-400 block text-[10px] uppercase font-mono">Alt Text:</strong>
+                      <strong className="text-slate-400 block text-[10px] uppercase font-mono">
+                        Alt Text:
+                      </strong>
                       "{imgSet.context.alt}"
                     </div>
                   </div>
@@ -157,7 +172,9 @@ function ImageReviewPage() {
                       />
                     </div>
                     <div className="mt-3 text-[11px] text-slate-400 leading-snug">
-                      <strong className="text-slate-500 block text-[10px] uppercase font-mono">Role:</strong>
+                      <strong className="text-slate-500 block text-[10px] uppercase font-mono">
+                        Role:
+                      </strong>
                       OpenGraph & Twitter Card Preview
                     </div>
                   </div>

@@ -12,5 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /dev/
 
 Sitemap: https://www.dirtquit.info/sitemap.xml
