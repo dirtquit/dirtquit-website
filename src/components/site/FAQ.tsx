@@ -92,7 +92,7 @@ export function FAQ() {
             source="faq_footer"
             variant="whatsapp"
             size="sm"
-            label="💬 Chat on WhatsApp"
+            label="Chat on WhatsApp"
             message="Hi Dirt Quit, I have a question about your cleaning services in Bengaluru."
           />
         </div>
