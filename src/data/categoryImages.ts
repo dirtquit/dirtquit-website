@@ -59,10 +59,10 @@ import carpetDetail from "@/assets/categories/carpet-cleaning/carpet-cleaning-be
 import carpetContext from "@/assets/categories/carpet-cleaning/carpet-cleaning-bengaluru-context.webp";
 
 // mattress-cleaning
-import mattressHero from "@/assets/categories/mattress-cleaning/mattress-cleaning-bengaluru-hero.webp";
+import mattressHero from "@/assets/images/mattress_cleaning_1791465119369.jpg";
 import mattressHero800 from "@/assets/categories/mattress-cleaning/mattress-cleaning-bengaluru-hero-800.webp";
 import mattressHero480 from "@/assets/categories/mattress-cleaning/mattress-cleaning-bengaluru-hero-480.webp";
-import mattressOg from "@/assets/categories/mattress-cleaning/mattress-cleaning-bengaluru-og.jpg";
+import mattressOg from "@/assets/images/mattress_cleaning_1791465119369.jpg";
 import mattressDetail from "@/assets/categories/mattress-cleaning/mattress-cleaning-bengaluru-detail.webp";
 import mattressContext from "@/assets/categories/mattress-cleaning/mattress-cleaning-bengaluru-context.webp";
 
@@ -75,10 +75,10 @@ import floorDetail from "@/assets/categories/floor-cleaning/floor-cleaning-benga
 import floorContext from "@/assets/categories/floor-cleaning/floor-cleaning-bengaluru-context.webp";
 
 // window-cleaning
-import windowHero from "@/assets/categories/window-cleaning/window-cleaning-bengaluru-hero.webp";
+import windowHero from "@/assets/images/window_cleaning_1791465139444.jpg";
 import windowHero800 from "@/assets/categories/window-cleaning/window-cleaning-bengaluru-hero-800.webp";
 import windowHero480 from "@/assets/categories/window-cleaning/window-cleaning-bengaluru-hero-480.webp";
-import windowOg from "@/assets/categories/window-cleaning/window-cleaning-bengaluru-og.jpg";
+import windowOg from "@/assets/images/window_cleaning_1791465139444.jpg";
 import windowDetail from "@/assets/categories/window-cleaning/window-cleaning-bengaluru-detail.webp";
 import windowContext from "@/assets/categories/window-cleaning/window-cleaning-bengaluru-context.webp";
 
@@ -99,42 +99,42 @@ import officeDetail from "@/assets/categories/office-cleaning/office-cleaning-be
 import officeContext from "@/assets/categories/office-cleaning/office-cleaning-bengaluru-context.webp";
 
 // post-construction-cleaning
-import postConstructionHero from "@/assets/categories/post-construction-cleaning/post-construction-cleaning-bengaluru-hero.webp";
+import postConstructionHero from "@/assets/images/post_construction_1791465162395.jpg";
 import postConstructionHero800 from "@/assets/categories/post-construction-cleaning/post-construction-cleaning-bengaluru-hero-800.webp";
 import postConstructionHero480 from "@/assets/categories/post-construction-cleaning/post-construction-cleaning-bengaluru-hero-480.webp";
-import postConstructionOg from "@/assets/categories/post-construction-cleaning/post-construction-cleaning-bengaluru-og.jpg";
+import postConstructionOg from "@/assets/images/post_construction_1791465162395.jpg";
 import postConstructionDetail from "@/assets/categories/post-construction-cleaning/post-construction-cleaning-bengaluru-detail.webp";
 import postConstructionContext from "@/assets/categories/post-construction-cleaning/post-construction-cleaning-bengaluru-context.webp";
 
 // balcony-cleaning
-import balconyHero from "@/assets/categories/balcony-cleaning/balcony-cleaning-bengaluru-hero.webp";
+import balconyHero from "@/assets/images/balcony_cleaning_1791465181188.jpg";
 import balconyHero800 from "@/assets/categories/balcony-cleaning/balcony-cleaning-bengaluru-hero-800.webp";
 import balconyHero480 from "@/assets/categories/balcony-cleaning/balcony-cleaning-bengaluru-hero-480.webp";
-import balconyOg from "@/assets/categories/balcony-cleaning/balcony-cleaning-bengaluru-og.jpg";
+import balconyOg from "@/assets/images/balcony_cleaning_1791465181188.jpg";
 import balconyDetail from "@/assets/categories/balcony-cleaning/balcony-cleaning-bengaluru-detail.webp";
 import balconyContext from "@/assets/categories/balcony-cleaning/balcony-cleaning-bengaluru-context.webp";
 
 // appliance-cleaning
-import applianceHero from "@/assets/categories/appliance-cleaning/appliance-cleaning-bengaluru-hero.webp";
+import applianceHero from "@/assets/images/appliance_cleaning_1791465203861.jpg";
 import applianceHero800 from "@/assets/categories/appliance-cleaning/appliance-cleaning-bengaluru-hero-800.webp";
 import applianceHero480 from "@/assets/categories/appliance-cleaning/appliance-cleaning-bengaluru-hero-480.webp";
-import applianceOg from "@/assets/categories/appliance-cleaning/appliance-cleaning-bengaluru-og.jpg";
+import applianceOg from "@/assets/images/appliance_cleaning_1791465203861.jpg";
 import applianceDetail from "@/assets/categories/appliance-cleaning/appliance-cleaning-bengaluru-detail.webp";
 import applianceContext from "@/assets/categories/appliance-cleaning/appliance-cleaning-bengaluru-context.webp";
 
 // regular-home-cleaning
-import regularHomeHero from "@/assets/categories/regular-home-cleaning/regular-home-cleaning-bengaluru-hero.webp";
+import regularHomeHero from "@/assets/images/regular_cleaning_1791465225166.jpg";
 import regularHomeHero800 from "@/assets/categories/regular-home-cleaning/regular-home-cleaning-bengaluru-hero-800.webp";
 import regularHomeHero480 from "@/assets/categories/regular-home-cleaning/regular-home-cleaning-bengaluru-hero-480.webp";
-import regularHomeOg from "@/assets/categories/regular-home-cleaning/regular-home-cleaning-bengaluru-og.jpg";
+import regularHomeOg from "@/assets/images/regular_cleaning_1791465225166.jpg";
 import regularHomeDetail from "@/assets/categories/regular-home-cleaning/regular-home-cleaning-bengaluru-detail.webp";
 import regularHomeContext from "@/assets/categories/regular-home-cleaning/regular-home-cleaning-bengaluru-context.webp";
 
 // specialized-cleaning
-import specializedHero from "@/assets/categories/specialized-cleaning/specialized-cleaning-bengaluru-hero.webp";
+import specializedHero from "@/assets/images/specialized_cleaning_1791465254412.jpg";
 import specializedHero800 from "@/assets/categories/specialized-cleaning/specialized-cleaning-bengaluru-hero-800.webp";
 import specializedHero480 from "@/assets/categories/specialized-cleaning/specialized-cleaning-bengaluru-hero-480.webp";
-import specializedOg from "@/assets/categories/specialized-cleaning/specialized-cleaning-bengaluru-og.jpg";
+import specializedOg from "@/assets/images/specialized_cleaning_1791465254412.jpg";
 import specializedDetail from "@/assets/categories/specialized-cleaning/specialized-cleaning-bengaluru-detail.webp";
 import specializedContext from "@/assets/categories/specialized-cleaning/specialized-cleaning-bengaluru-context.webp";
 
@@ -317,10 +317,10 @@ export const CATEGORY_IMAGES: Record<string, CategoryImages> = {
   "mattress-cleaning": {
     hero: {
       src: mattressHero,
-      alt: "Clean mattress and neat white bed linens in a modern bedroom",
+      alt: "Professional mattress deep cleaning and dust mite extraction in Bengaluru",
       width: 1200,
       height: 900,
-      srcset: `${mattressHero480} 480w, ${mattressHero800} 800w, ${mattressHero} 1200w`,
+      srcset: `${mattressHero} 1200w`,
       sizes: "(min-width: 1024px) 45vw, 100vw",
     },
     detail: {
@@ -367,10 +367,10 @@ export const CATEGORY_IMAGES: Record<string, CategoryImages> = {
   "window-cleaning": {
     hero: {
       src: windowHero,
-      alt: "Clean transparent glass window overlooking outdoor trees and daylight",
+      alt: "Professional high-rise apartment window glass and sliding track cleaning in Bengaluru",
       width: 1200,
       height: 900,
-      srcset: `${windowHero480} 480w, ${windowHero800} 800w, ${windowHero} 1200w`,
+      srcset: `${windowHero} 1200w`,
       sizes: "(min-width: 1024px) 45vw, 100vw",
     },
     detail: {
@@ -442,10 +442,10 @@ export const CATEGORY_IMAGES: Record<string, CategoryImages> = {
   "post-construction-cleaning": {
     hero: {
       src: postConstructionHero,
-      alt: "Freshly renovated apartment interior with clean walls and newly laid floor",
+      alt: "Post-construction deep cleaning, paint spot scraping, and plaster dust extraction in Bengaluru",
       width: 1200,
       height: 900,
-      srcset: `${postConstructionHero480} 480w, ${postConstructionHero800} 800w, ${postConstructionHero} 1200w`,
+      srcset: `${postConstructionHero} 1200w`,
       sizes: "(min-width: 1024px) 45vw, 100vw",
     },
     detail: {
@@ -467,10 +467,10 @@ export const CATEGORY_IMAGES: Record<string, CategoryImages> = {
   "balcony-cleaning": {
     hero: {
       src: balconyHero,
-      alt: "Clean apartment balcony with potted green plants and outdoor floor",
+      alt: "Apartment balcony jet washing, floor scrubbing, and glass railing cleaning in Bengaluru",
       width: 1200,
       height: 900,
-      srcset: `${balconyHero480} 480w, ${balconyHero800} 800w, ${balconyHero} 1200w`,
+      srcset: `${balconyHero} 1200w`,
       sizes: "(min-width: 1024px) 45vw, 100vw",
     },
     detail: {
@@ -492,10 +492,10 @@ export const CATEGORY_IMAGES: Record<string, CategoryImages> = {
   "appliance-cleaning": {
     hero: {
       src: applianceHero,
-      alt: "Modern kitchen with stainless steel refrigerator and clean microwave oven",
+      alt: "Detailed refrigerator, microwave, and kitchen appliance interior deep cleaning in Bengaluru",
       width: 1200,
       height: 900,
-      srcset: `${applianceHero480} 480w, ${applianceHero800} 800w, ${applianceHero} 1200w`,
+      srcset: `${applianceHero} 1200w`,
       sizes: "(min-width: 1024px) 45vw, 100vw",
     },
     detail: {
@@ -517,10 +517,10 @@ export const CATEGORY_IMAGES: Record<string, CategoryImages> = {
   "regular-home-cleaning": {
     hero: {
       src: regularHomeHero,
-      alt: "Tidy everyday apartment living room with organized furniture and natural light",
+      alt: "Routine home cleaning, floor mopping, and surface dusting in Bengaluru",
       width: 1200,
       height: 900,
-      srcset: `${regularHomeHero480} 480w, ${regularHomeHero800} 800w, ${regularHomeHero} 1200w`,
+      srcset: `${regularHomeHero} 1200w`,
       sizes: "(min-width: 1024px) 45vw, 100vw",
     },
     detail: {
@@ -542,10 +542,10 @@ export const CATEGORY_IMAGES: Record<string, CategoryImages> = {
   "specialized-cleaning": {
     hero: {
       src: specializedHero,
-      alt: "Clean spacious dance and yoga fitness studio with polished floor and wall mirrors",
+      alt: "Specialized steam sanitization and high-temperature deep disinfection in Bengaluru",
       width: 1200,
       height: 900,
-      srcset: `${specializedHero480} 480w, ${specializedHero800} 800w, ${specializedHero} 1200w`,
+      srcset: `${specializedHero} 1200w`,
       sizes: "(min-width: 1024px) 45vw, 100vw",
     },
     detail: {
