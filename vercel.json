@@ -6,5 +6,17 @@
   },
   "env": {
     "DANGEROUSLY_DEPLOY_VULNERABLE_TANSTACK_START_XSS": "1"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/studio",
+      "destination": "https://www.sanity.io/manage/project/ltxt6lsd",
+      "permanent": false
+    },
+    {
+      "source": "/studio/:path*",
+      "destination": "https://www.sanity.io/manage/project/ltxt6lsd",
+      "permanent": false
+    }
+  ]
 }
