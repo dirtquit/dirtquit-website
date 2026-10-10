@@ -13,7 +13,8 @@ import { AuthorBox } from "@/components/blog/AuthorBox";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { InlineCTA } from "@/components/blog/InlineCTA";
 import { ShareBar } from "@/components/blog/ShareBar";
-import { getBlogPostBySlug, getRelatedBlogPosts } from "@/data/blogData";
+import { PortableTextBody } from "@/components/blog/PortableTextBody";
+import { getPostBySlug, getPosts, pickRelatedPosts } from "@/lib/sanity";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -22,12 +23,12 @@ import {
 } from "@/lib/schema";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    const post = getBlogPostBySlug(params.slug);
+  loader: async ({ params }) => {
+    const [post, allPosts] = await Promise.all([getPostBySlug(params.slug), getPosts()]);
     if (!post) {
       throw notFound();
     }
-    const relatedPosts = getRelatedBlogPosts(post.relatedSlugs || []);
+    const relatedPosts = pickRelatedPosts(post, allPosts);
     return { post, relatedPosts };
   },
   head: ({ loaderData }) => {
@@ -41,9 +42,8 @@ export const Route = createFileRoute("/blog/$slug")({
     const title = post.seo.seoTitle || `${post.title} | Dirt Quit`;
     const description = post.seo.metaDescription || post.excerpt;
     const canonical = post.seo.canonicalUrl || `${SITE_URL}/blog/${post.slug}/`;
-    const ogImage = post.featuredImage.src.startsWith("http")
-      ? post.featuredImage.src
-      : `${SITE_URL}${post.featuredImage.src}`;
+    const ogSource = post.seo.ogImage || post.featuredImage.src;
+    const ogImage = ogSource.startsWith("http") ? ogSource : `${SITE_URL}${ogSource}`;
 
     const meta = [
       { title },
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/blog/$slug")({
     ];
 
     if (post.seo.noIndex) {
-      meta.push({ name: "robots", content: "noindex, nofollow" });
+      meta.push({ name: "robots", content: "noindex, follow" });
     }
 
     return {
@@ -115,7 +115,7 @@ function SingleArticleRouteComponent() {
               category={post.category}
               author={post.author}
               publishedAt={post.publishedAt}
-              updatedAt={post.updatedAt}
+              {...(post.updatedAt ? { updatedAt: post.updatedAt } : {})}
               readingTimeMinutes={post.readingTimeMinutes}
             />
 
@@ -129,7 +129,11 @@ function SingleArticleRouteComponent() {
             <div className="mt-8 grid gap-10 lg:grid-cols-12">
               {/* Main Content Body */}
               <div className="lg:col-span-8">
-                <ArticleBody sections={post.sections} />
+                {post.body ? (
+                  <PortableTextBody body={post.body} />
+                ) : (
+                  <ArticleBody sections={post.sections} />
+                )}
 
                 {/* Social Share Bar */}
                 <ShareBar title={post.title} url={currentUrl} />

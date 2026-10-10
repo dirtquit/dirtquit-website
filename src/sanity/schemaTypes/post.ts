@@ -122,8 +122,47 @@ export default {
       title: "Article Body",
       type: "array",
       group: "content",
+      description:
+        "Use H2 for main sections and H3 for sub-sections. The table of contents is built from these headings.",
       of: [
-        { type: "block" },
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          lists: [
+            { title: "Bullet", value: "bullet" },
+            { title: "Numbered", value: "number" },
+          ],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  {
+                    name: "href",
+                    type: "string",
+                    title: "URL or internal path",
+                    description: "Internal: /bengaluru/deep-cleaning/ · External: https://...",
+                    validation: (Rule: any) => Rule.required(),
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        { type: "callout" },
+        { type: "comparisonTable" },
+        { type: "serviceLink" },
         {
           type: "image",
           fields: [
@@ -203,11 +242,32 @@ export default {
       description: "e.g., Bengaluru apartment owners, tenants preparing to vacate, villa residents",
     },
     {
+      name: "ctaHeading",
+      title: "CTA Heading",
+      type: "string",
+      group: "editorGuidance",
+      description: "Shown in the inline CTA box after the article body.",
+    },
+    {
+      name: "ctaDescription",
+      title: "CTA Description",
+      type: "text",
+      rows: 2,
+      group: "editorGuidance",
+    },
+    {
       name: "ctaText",
-      title: "Tailored CTA Text",
+      title: "CTA Button Text",
       type: "string",
       group: "editorGuidance",
       description: "e.g., Book Bengaluru Deep Cleaning Today",
+    },
+    {
+      name: "ctaHref",
+      title: "CTA Service Path",
+      type: "string",
+      group: "editorGuidance",
+      description: "e.g., /bengaluru/deep-cleaning/",
     },
     {
       name: "internalLinksToInclude",

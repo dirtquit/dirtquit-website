@@ -1,3 +1,5 @@
+import type { PtBlock } from "@/lib/portableText";
+
 export interface BlogAuthor {
   name: string;
   slug: string;
@@ -84,6 +86,8 @@ export interface BlogPost {
   keyTakeaways: string[];
   tableOfContents: TableOfContentItem[];
   sections: ContentSection[];
+  /** Portable Text body from Sanity. When present it replaces `sections`. */
+  body?: PtBlock[];
   faqs: BlogFaqItem[];
   relatedSlugs: string[];
   cta: {

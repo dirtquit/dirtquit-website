@@ -8,10 +8,12 @@ import { Container } from "@/components/site/shared";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { BlogCard } from "@/components/blog/BlogCard";
-import { getAllBlogPosts, BLOG_CATEGORIES } from "@/data/blogData";
+import { BLOG_CATEGORIES } from "@/data/blogData";
+import { getPosts } from "@/lib/sanity";
 import { generateBlogIndexSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/blog/")({
+  loader: async () => ({ posts: await getPosts() }),
   head: () => {
     const title = "Cleaning Knowledge Hub & Guides | Dirt Quit Bengaluru";
     const description =
@@ -34,7 +36,7 @@ export const Route = createFileRoute("/blog/")({
 });
 
 function BlogIndexRouteComponent() {
-  const allPosts = useMemo(() => getAllBlogPosts(), []);
+  const { posts: allPosts } = Route.useLoaderData();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 

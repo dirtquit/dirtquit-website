@@ -16,6 +16,7 @@ interface SitemapEntry {
   url: string;
   changefreq: "daily" | "weekly" | "monthly";
   priority: number;
+  lastmod?: string;
 }
 
 const entries: SitemapEntry[] = [];
@@ -41,13 +42,51 @@ entries.push({
   priority: 0.9,
 });
 
-// 4. Individual Blog Articles
+// 4. Individual Blog Articles: published Sanity posts merged with local guides.
+//    Noindex posts are left out so the sitemap never contradicts the page.
+interface SitemapPost {
+  slug: string;
+  noIndex?: boolean | null;
+  lastmod?: string | null;
+}
+
+async function fetchSanityPosts(): Promise<SitemapPost[]> {
+  const projectId = process.env["SANITY_PROJECT_ID"] || "ltxt6lsd";
+  const dataset = process.env["SANITY_DATASET"] || "production";
+  const query = `*[_type == "post" && defined(slug.current) && !(_id in path("drafts.**"))]{
+    "slug": slug.current, "noIndex": seo.noIndex, "lastmod": coalesce(updatedAt, publishedAt, _updatedAt)
+  }`;
+  try {
+    const res = await fetch(
+      `https://${projectId}.apicdn.sanity.io/v2024-03-01/data/query/${dataset}?query=${encodeURIComponent(query)}`,
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = (await res.json()) as { result?: SitemapPost[] };
+    return json.result ?? [];
+  } catch (err) {
+    console.warn("[sitemap] Could not reach Sanity, using local posts only:", err);
+    return [];
+  }
+}
+
+const blogPosts = new Map<string, SitemapPost>();
 for (const post of BLOG_POSTS) {
-  if (post.seo?.noIndex) continue;
+  blogPosts.set(post.slug, {
+    slug: post.slug,
+    noIndex: post.seo?.noIndex ?? false,
+    lastmod: post.updatedAt || post.publishedAt,
+  });
+}
+for (const post of await fetchSanityPosts()) {
+  blogPosts.set(post.slug, post);
+}
+for (const post of blogPosts.values()) {
+  if (post.noIndex) continue;
   entries.push({
     url: `${BASE_URL}/blog/${post.slug}/`,
     changefreq: "weekly",
     priority: 0.85,
+    ...(post.lastmod ? { lastmod: post.lastmod.split("T")[0] } : {}),
   });
 }
 
@@ -80,7 +119,7 @@ ${entries
   .map(
     (e) => `  <url>
     <loc>${e.url}</loc>
-    <lastmod>${currentDate}</lastmod>
+    <lastmod>${e.lastmod || currentDate}</lastmod>
     <changefreq>${e.changefreq}</changefreq>
     <priority>${e.priority.toFixed(2)}</priority>
   </url>`,

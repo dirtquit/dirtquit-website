@@ -10,7 +10,8 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sanity:seed": "node --experimental-strip-types --env-file=.env.local scripts/seed-sanity-posts.ts"
   },
   "overrides": {
     "rolldown": "1.2.1"
