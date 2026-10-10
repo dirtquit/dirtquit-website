@@ -17,6 +17,7 @@ import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as DevImageReviewRouteImport } from './routes/dev/image-review'
 import { Route as ServiceLocationsIndexRouteImport } from './routes/service-locations/index'
 import { Route as StudioIndexRouteImport } from './routes/studio/index'
+import { Route as StudioSplatRouteImport } from './routes/studio/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,12 +59,18 @@ const StudioIndexRoute = StudioIndexRouteImport.update({
   path: '/studio/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudioSplatRoute = StudioSplatRouteImport.update({
+  id: '/studio/$',
+  path: '/studio/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$city/$categorySlug': typeof CityCategorySlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/dev/image-review': typeof DevImageReviewRoute
+  '/studio/$': typeof StudioSplatRoute
   '/$city/': typeof CityIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/service-locations/': typeof ServiceLocationsIndexRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/$city/$categorySlug': typeof CityCategorySlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/dev/image-review': typeof DevImageReviewRoute
+  '/studio/$': typeof StudioSplatRoute
   '/$city': typeof CityIndexRoute
   '/blog': typeof BlogIndexRoute
   '/service-locations': typeof ServiceLocationsIndexRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/$city/$categorySlug': typeof CityCategorySlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/dev/image-review': typeof DevImageReviewRoute
+  '/studio/$': typeof StudioSplatRoute
   '/$city/': typeof CityIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/service-locations/': typeof ServiceLocationsIndexRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/$city/$categorySlug'
     | '/blog/$slug'
     | '/dev/image-review'
+    | '/studio/$'
     | '/$city/'
     | '/blog/'
     | '/service-locations/'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/$city/$categorySlug'
     | '/blog/$slug'
     | '/dev/image-review'
+    | '/studio/$'
     | '/$city'
     | '/blog'
     | '/service-locations'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/$city/$categorySlug'
     | '/blog/$slug'
     | '/dev/image-review'
+    | '/studio/$'
     | '/$city/'
     | '/blog/'
     | '/service-locations/'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   CityCategorySlugRoute: typeof CityCategorySlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   DevImageReviewRoute: typeof DevImageReviewRoute
+  StudioSplatRoute: typeof StudioSplatRoute
   CityIndexRoute: typeof CityIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
   ServiceLocationsIndexRoute: typeof ServiceLocationsIndexRoute
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudioIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studio/$': {
+      id: '/studio/$'
+      path: '/studio/$'
+      fullPath: '/studio/$'
+      preLoaderRoute: typeof StudioSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   CityCategorySlugRoute: CityCategorySlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   DevImageReviewRoute: DevImageReviewRoute,
+  StudioSplatRoute: StudioSplatRoute,
   CityIndexRoute: CityIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
   ServiceLocationsIndexRoute: ServiceLocationsIndexRoute,
